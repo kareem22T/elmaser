@@ -1,0 +1,242 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Tajawal', sans-serif;
+}
+
+body {
+    direction: rtl;
+    background-size: cover;
+    background-attachment: fixed;
+    background-color: #f7f0e6;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    padding: 1rem;
+    background: #000;
+    gap: 1rem;
+}
+
+header>* {
+    padding: .7rem 1rem;
+    background: white;
+    border-radius: 1rem;
+}
+
+header img {
+    width: 100px
+}
+
+header a {
+    width: 100%;
+    font-size: 33px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    background-color: transparent;
+    text-decoration: none;
+    transition: all .3s ease-in;
+}
+
+header a.active,
+header a:hover {
+    background: white;
+    color: #000;
+}
+
+header a.active:hover {
+    background-color: transparent;
+    color: white;
+    border: 2px solid white;
+}
+
+.page-title {
+    font-weight: 600;
+    font-size: 1.9rem !important;
+}
+
+input,
+textarea,
+select,
+.input {
+    border: 0.5px solid rgba(255, 0, 0, 0.4) !important;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25) !important;
+    font-size: 25px !important;
+    padding: .6rem 1rem !important;
+    border-radius: 20px !important;
+    background-color: #fff !important;
+}
+
+label {
+    font-size: 25px !important;
+}
+
+.button {
+    border: 2px solid #e06045 !important;
+    font-size: 25px !important;
+    padding: .6rem 1rem !important;
+    border-radius: 20px !important;
+    background-color: #e06045 !important;
+    font-weight: 600;
+}
+
+.button-secondary {
+    border: 2px solid #000000 !important;
+    font-size: 25px !important;
+    padding: .6rem 1rem !important;
+    border-radius: 20px !important;
+    background-color: #000 !important;
+    font-weight: 600;
+}
+
+.button-gray {
+    border: 2px solid rgba(89, 89, 89, 1) !important;
+    font-size: 25px !important;
+    padding: .6rem 1rem !important;
+    border-radius: 20px !important;
+    background-color: rgba(89, 89, 89, 1) !important;
+    font-weight: 600;
+}
+
+.article-content:focus {
+    border: 1px solid rgba(255, 0, 0, 0.4)
+}
+
+.button:hover {
+    background-color: transparent !important;
+    color: black;
+}
+
+.home .container {
+    display: grid;
+    grid-template-columns: 2fr 3fr 1fr;
+    gap: 20px;
+}
+
+.add-ads >div{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.add-ads >div .pc_ads{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1rem;
+}
+
+.add-ads >div .ad_wrapper
+{
+  width: 100%;
+}
+
+.add-ads >div .ad
+{
+    background: #D9D9D9;
+    color: #000;
+text-align: center;
+font-size: 18px !important;
+position: relative;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
+display: flex;
+justify-content: center;
+align-items: center;
+padding: 10px;
+}
+
+.add-ads >div .ad_wrapper input
+{
+  display: none;
+}
+
+.add-ads >div .pc_ads .ad_wrapper .ad
+{
+  width: 100%;
+  height: calc((170px * 3) + 1rem * 2);
+  border-radius: 1rem;
+  overflow: hidden;
+}
+
+.add-ads >div .main_ad .ad_wrapper .ad
+{
+  width: 100%;
+  height: calc((170px * 3) + 1rem * 2);
+  border-radius: 1rem;
+  overflow: hidden;
+}
+
+
+.add-ads >div .mobile_ads .ad_wrapper .ad
+{
+  width: 100%;
+  height: 170px;
+  border-radius: 1rem;
+  overflow: hidden;
+}
+
+.add-ads >div .ad_wrapper .ad img
+{
+    width: 100% !important;
+    border: none;
+    max-width: 100% !important;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    z-index: 3;
+}
+
+.mobile_ads {
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr;
+    gap: 1rem;
+}
+
+#admins_wrapper .switchs {
+    color: #000;
+    margin-top: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem
+  }
+  #admins_wrapper .switchs button {
+    box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.25) !important;
+    border: none;
+    background: white;
+    padding: 1rem 1.5rem;
+    border-radius: 1rem;
+    font-family: Outfit;
+    font-size: 21px;
+    font-weight: 500;
+    letter-spacing: 0em;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    opacity: 0.5;
+    transition: all 0.3s ease-in;
+    cursor: pointer;
+  }
+  #admins_wrapper .switchs button svg {
+    width: 30px;
+    height: 30px;
+  }
+  #admins_wrapper .switchs button svg path {
+    stroke: #000;
+  }
+  #admins_wrapper .switchs button.active {
+    color: #e06045;
+    opacity: 1;
+  }
+  #admins_wrapper .switchs button.active path {
+    stroke: #e06045;
+  }
+

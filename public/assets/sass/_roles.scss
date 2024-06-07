@@ -1,0 +1,74 @@
+* {
+    font-family: 'Cairo', sans-serif;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.ar {
+    direction: rtl;
+}
+
+body {
+    width: 100vw;
+    overflow: hidden auto;
+}
+
+$bg_light_gray: #f8f8f8;
+$bg_dark_gray: #eff1f1;
+$text_black_gray: #000000;
+$text_light_gray: #64757f;
+$text_dark_gray: #4f4f4f;
+$border_color: #dcdcdc;
+$main_color: #df6044;
+$secondary_color: #cc3434;
+
+.head-light {
+    font-size: 22px;
+    font-weight: 700;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    gap: 10px;
+    white-space: nowrap;
+    color: #000000;
+    margin-bottom: 1.25rem;
+    i {
+        font-size: 32px;
+    }
+
+    .line {
+        width: 100%;
+        margin-right: 20px;
+        height: 1px;
+        background-color: $border_color;
+    }
+}
+
+.head-dark {
+    margin-bottom: 1.25rem;
+    font-size: 22px;
+    font-weight: 700;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    gap: 10px;
+    white-space: nowrap;
+    color: $text_light_gray;
+    i {
+        font-size: 32px;
+    }
+    .line {
+        width: 100%;
+        margin-right: 20px;
+        height: 1px;
+        background-color: $border_color;
+    }
+}
+
+.flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}

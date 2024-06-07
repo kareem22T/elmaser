@@ -15,7 +15,7 @@
     <div class="container">
         <div class="logo_wrapper">
             <a href="/">
-                <img src="{{ asset('/assets/imgs/home-maser-logo.jpg')}}" style="width: 130px" alt="logo" class="logo">
+                <img src="{{ asset('/assets/imgs/home-maser-logo.jpg')}}?v={{time()}}" style="width: 130px" alt="logo" class="logo">
             </a>
             <div class="text">
                 رئيس مجلس الادارة: {{ App\Models\Editor_master::first() && App\Models\Editor_master::first()->manager_name ? App\Models\Editor_master::first()->manager_name : "لم يحدد بعد"}}

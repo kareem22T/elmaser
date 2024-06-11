@@ -144,7 +144,7 @@ class ArticleController extends Controller
             'title' => 'required|string',
             'content' => 'required',
             'thumbnail' => 'required',
-            'author_name' => 'required',
+            'author_id' => 'required',
             'intro' => 'required',
         ], [
             'title.required' => 'من فضلك قم بكتابة عنوان الخبر',
@@ -175,10 +175,10 @@ class ArticleController extends Controller
             'sub_title' => $request->sub_title ? $request->sub_title : null,
             'thumbnail_path' => $request->thumbnail ? $request->thumbnail : null,
             'category_id' => $request->cat_id,
-            'author_name' => $request->author_name,
+            'author_name' => $request->author_name || "xxxx",
             'intro' => $request->intro,
             'isDraft' => $request->draft ? true : false,
-            'author_id' => 1,
+            'author_id' => $request->author_id,
         ]);
 
         if ($request->tags)
@@ -216,7 +216,7 @@ class ArticleController extends Controller
             'content' => 'required',
             'thumbnail' => 'required',
             'intro' => 'required',
-            'author_name' => 'required',
+            'author_id' => 'required',
             'cat_id' => 'required'
         ], [
             'title.required' => 'من فضلك قم بكتابة عنوان الخبر',
@@ -247,7 +247,7 @@ class ArticleController extends Controller
         if ($request->thumbnail_title)
         $Article->thumbnail_title = $request->thumbnail_title;
         $Article->intro = $request->intro;
-        $Article->author_name = $request->author_name;
+        $Article->author_id = $request->author_id;
         $Article->category_id = $request->cat_id;
         $Article->isDraft = $request->draft ? true : false;
         $Article->save();

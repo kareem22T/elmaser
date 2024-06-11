@@ -28,6 +28,11 @@ class Article extends Model
     ];
 
     // relationships
+    public function author()
+    {
+        return $this->belongsTo('App\Models\Author', 'author_id');
+    }
+
     public function titles()
     {
         return $this->hasMany('App\Models\Article_Title', 'article_id');

@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\TagsController;
 use App\Http\Controllers\Admin\ImagesController;
 use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\Admin\SettingsController;
+use App\Http\Controllers\AuthorsController;
 
 Route::middleware(['guest_admin'])->group(function () {
     Route::get('/login', [RegisterController::class, 'getLoginIndex']);
@@ -30,6 +31,19 @@ Route::middleware(['auth:admin'])->group(function () {
     Route::get('/settings', [SettingsController::class, 'index']);
     Route::post('/settings/store', [SettingsController::class, 'store']);
     Route::post('/settings/toggleCatAtMain/{id}', [SettingsController::class, 'toggleCatAtMainNav']);
+
+    // authors
+    Route::prefix('authors')->group(function () {
+        Route::get('/', [AuthorsController::class, "index"])->name('authors.prev');
+        Route::get('/add', [AuthorsController::class, "addIndex"])->name('authors.add');
+        Route::get('/edit/{id}', [AuthorsController::class, "edit"])->name('authors.edit');
+        Route::get('/author/{id}', [AuthorsController::class, "privewAuthor"])->name('author.show');
+        Route::post('/update', [AuthorsController::class, "update"])->name('author.update');
+        Route::post('/get', [AuthorsController::class, "getAuthors"])->name('authors.get');
+        Route::post('/search', [AuthorsController::class, "search"])->name('authors.search');
+        Route::post('/delete', [AuthorsController::class, "delete"])->name('authors.delete');
+        Route::post('/add', [AuthorsController::class, "put"])->name('author.put');
+    });
 
     //tags
     Route::get('/tags', [TagsController::class, 'preview']);

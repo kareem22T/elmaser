@@ -107,21 +107,45 @@
         <img src="{{ asset('/dashboard/images/logo.png') }}" alt="">
       </a>
     </div>
-    <a href="{{ route('article.add') }}" class="@yield('add_article_active_btn')">
+    <a href="{{ route('article.add') }}" style="display: flex; flex-direction: column" class="@yield('add_article_active_btn')">
       <i class="ti ti-text-plus"></i>
+        <span style="font-size: 16px">
+          اضافة مقال
+        </span>
     </a>
     @if(Auth::guard("admin")->user()->role === "Master")
-      <a href="{{ route('categories.prev') }}" class="@yield('categories_prev')">
+      <a href="{{ route('authors.prev') }}" style="display: flex; flex-direction: column" class="@yield('authors_prev')">
+        <i class="ti ti-user"></i>
+        <span style="font-size: 16px">
+            الناشرين
+        </span>
+      </a>
+      <a href="{{ route('categories.prev') }}" style="display: flex; flex-direction: column" class="@yield('categories_prev')">
         <i class="ti ti-category"></i>
+        <span style="font-size: 16px">
+            الاقسام
+        </span>
       </a>
-      <a href="{{ route('home.edit') }}" class="@yield('categories_add_active')">
+      <a href="{{ route('home.edit') }}" style="display: flex; flex-direction: column" class="@yield('categories_add_active')">
         <i class="ti ti-home"></i>
+        <span style="font-size: 16px">
+            الرئيسية
+        </span>
       </a>
-      <a href="/admin/admins" class="@yield('admins_active')">
+      <a href="/admin/admins" style="display: flex; flex-direction: column" class="@yield('admins_active')">
         <i class="ti ti-shield"></i>
+
+        <span style="font-size: 16px">
+            المسؤلين
+        </span>
       </a>
-      <a href="/admin/settings" class="@yield('settings_active')">
+      <a href="/admin/settings" style="display: flex; flex-direction: column" class="@yield('settings_active')">
         <i class="ti ti-settings"></i>
+
+        <span style="font-size: 16px">
+            الاعدادات
+        </span>
+
       </a>
     @endif
   </header>

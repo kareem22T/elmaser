@@ -18,7 +18,7 @@ return new class extends Migration
             $table->text('sub_title')->nullable();
             $table->longText('content');
             $table->string('thumbnail_path')->nullable();
-            $table->string('author_name');
+            $table->string('author_name')->nullable();
             $table->integer('category_id');
             $table->boolean('isDraft')->default(false);
             $table->integer('author_id');

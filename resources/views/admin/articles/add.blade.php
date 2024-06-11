@@ -36,7 +36,18 @@
                     </select>
                 </div>
                 <div class="w-50">
-                    <input type="text" name="author" id="author" class="form-control" placeholder="اسم الكاتب" v-model="author_name">
+                    @php
+                        $authors = App\Models\Author::all();
+                    @endphp
+                    <label for="symbol" class="form-label">الناشر *</label>
+                    <select name="cat_type" id="cat_type" class="form-control" v-model="author_id">
+                        @foreach ($authors as $author)
+
+                            <option value="{{$author->id}}">
+                                {{$author->name}}
+                            </option>
+                        @endforeach
+                    </select>
                 </div>
             </div>
             <!-- Swiper -->
@@ -184,7 +195,7 @@
             </div>
             <div class="w-50 mb-5" style="margin-left: auto;margin-right: auto">
                 <div @click="this.showImages = true; this.current_article_id = null" class="w-100 h-100 p-3 d-flex justify-content-center align-items-center form-control input" style="height: 170px; max-height: 300px">
-                    <img :src="preview_img ? preview_img : '/dashboard/images/add_image.svg'" id="preview" alt="img logo" style="width: 100%;object-fit: contain; height: 100%;">
+                    <img :src="preview_img ? preview_img : '/dashboard/images/add_image.svg'" id="preview" alt="img logo" style="width: 100%;object-fit: contain; height: 100%;max-width: 250px">
                 </div>
             </div>
 
@@ -259,6 +270,7 @@ createApp({
       choosed_img_title: "",
       showSliderPopUp: false,
       showCodePopUp: false,
+      author_id: null,
       slider_imgs: [],
       code: '',
       forSlider: false,
@@ -292,6 +304,7 @@ createApp({
                 thumbnail_title: this.thumbnail_title,
                 cat_id: cat_id,
                 author_name: author_name,
+                author_id: this.author_id,
                 tags: tags,
                 draft: draft ? draft : null,
                 intro: this.intro,

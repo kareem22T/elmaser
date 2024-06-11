@@ -145,7 +145,7 @@
                                     <h4 class="head-eg">{{ $article->category->main_name }}</h4>
                                 </a>
                                 <a  href="/article/{{$article->id}}">
-                                    <p>مستثمرون يتوقعون حصيلة صادرات العقار المصري سنويا</p>
+                                    <p>{{ $article->title }}</p>
                                 </a>
                                 <span class="date"><i class="fa-regular fa-calendar-days"></i>
                                     {{ $days[Carbon\Carbon::parse($article->created_at)->dayOfWeek] . ', ' . Carbon\Carbon::parse($article->created_at)->day . ' ' . $months[Carbon\Carbon::parse($article->created_at)->month - 1] . ', ' . Carbon\Carbon::parse($article->created_at)->year}}

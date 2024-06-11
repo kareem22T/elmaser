@@ -138,7 +138,7 @@
 
                         <div class="swiper-slide">
                             <a href="/article/{{$article->id}}" class="img">
-                                <img src="./assets/imgs/trend.jpg" alt="">
+                                <img src="{{$articel->thumbnail_path}}" alt="">
                             </a>
                             <div class="text">
                                 <a  href="/category/{{$article->category}}">

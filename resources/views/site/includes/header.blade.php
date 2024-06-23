@@ -120,7 +120,7 @@
                             <div id="ticker-box" style="overflow: hidden; min-height: 40px;">
                                 <ul style="padding: 0px; margin: 0px; position: relative; list-style-type: none;">
 
-                                    <li style="display: flex; justify-content: center; align-items: center; gap: 5px;    position: absolute; white-space: nowrap; right: -3543px; color: rgb(0, 0, 0);">
+                                    <li style="display: flex; justify-content: center; align-items: center; gap: 5px;font-size: 14px;font-weight: 500;    position: absolute; white-space: nowrap; right: -3543px; color: rgb(0, 0, 0);">
                                         @foreach ($important_articles as $index => $important)
                                         <a href="/article/{{$important->article->id}}" style="text-decoration: none; color:rgb(0, 0, 0); display: inline-flex;justify-content: center; align-items: center;gap: 12px;margin-right: 12px">
                                             {{$important->article->title}}
@@ -137,13 +137,6 @@
                     </div>
                 @endif
             </div>
-            <script>
-                var isMobile = window.innerWidth <= 767;
-                if (isMobile)
-                    startTicker('ticker-box', {speed: 16, delay:500});
-                else
-                    startTicker('ticker-box', {speed: 1, delay:500});
-            </script>
             <script>
                 var isMobile = window.innerWidth <= 767;
                 if (isMobile)

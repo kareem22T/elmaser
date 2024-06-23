@@ -449,13 +449,13 @@ header nav.bottom .container .right .links {
   }
 }
 header nav.bottom .container .right .links a {
-  text-decoration: none;
-  padding: 8px 24px;
-  color: #4f4f4f;
-  transition: all 0.3s ease-in;
-  display: block;
-  font-weight: 600;
-  font-size: 18px;
+    text-decoration: none;
+    padding: 10px 24px;
+    color: #4f4f4f;
+    transition: all 0.3s ease-in;
+    display: block;
+    font-weight: 600;
+    font-size: 16px;
 }
 header nav.bottom .container .right .links a:not(:first-child, :last-child) {
   border-left: 1px solid #dcdcdc;
@@ -568,7 +568,7 @@ header .head .container {
   padding: 1rem 10px;
 }
 header .head .container .logo {
-  width: 110px;
+  width: 150px;
 }
 header .head .container .head_advertisment {
   width: clamp(13.125rem, 7.859rem + 23.4043vw, 26.875rem);
@@ -670,7 +670,7 @@ header .head .container .head_advertisment {
   max-width: 150px !important;
 }
 .logo_wrapper .text {
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 600;
   margin-right: -8px;
 }

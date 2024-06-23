@@ -13,6 +13,7 @@ use App\Models\Category;
 use App\Models\Category_Name;
 use App\Models\Tag;
 use App\Models\Article;
+use App\Models\Author;
 use App\Models\Article_Title;
 use App\Models\Important_article;
 use App\Models\Article_Content;
@@ -119,34 +120,47 @@ class ArticleController extends Controller
         return view("site.search")->with(compact(["articles", "search_word"]));
     }
 
-    public function tagIndex(Request $request) {
-        $articles = Article::latest()->with(['category'])
-                            ->where(function ($query) use ($request) {
-                                $query->where('title', 'like', '%' . $request->s . '%')
-                                    ->orWhere('content', 'like', '%' . $request->s . '%')
-                                    ->orWhere('author_name', 'like', '%' . $request->s . '%');
-                            })
-                            ->where('isDraft', false)
-                            ->paginate(10);
+    public function tagIndex($name, $id) {
 
-        $search_word =  (string) $request->s;
-
-        if ($request->tag_id) {
+        $search_word = "";
+        if ($id) {
             $tag = Tag::with(['articles' => function ($query) {
 
                 $query->latest();
 
-            }])->find($request->tag_id);
+            }])->find($id);
 
 
             $articles = $tag->articles()->paginate(10);
+            $search_word =  $tag->name;
         }
 
-        $tag_id = $request->tag_id;
-        if ($request->tag_id)
+        $tag_id = $id;
+        if ($id)
             return view("site.tag")->with(compact(["articles", "search_word", "tag_id"]));
 
         return view("site.tag")->with(compact(["articles", "search_word"]));
+    }
+    public function authorIndex($name, $id) {
+
+        $search_word = "";
+        if ($id) {
+            $tag = Author::with(['articles' => function ($query) {
+
+                $query->latest();
+
+            }])->find($id);
+
+
+            $articles = $tag?->articles()->paginate(10);
+            $search_word =  $tag?->name;
+        }
+
+        $tag_id = $id;
+        if ($id)
+            return view("site.author")->with(compact(["articles", "search_word", "tag_id"]));
+
+        return view("site.author")->with(compact(["articles", "search_word"]));
     }
     public function categoryIndex(Request $request) {
 

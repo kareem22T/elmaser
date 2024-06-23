@@ -1,6 +1,6 @@
 @extends('site.layouts.main')
 
-@section('title', 'نتائج')
+@section('title', $search_word ?? "")
 
 @section('content')
 @if($articles)

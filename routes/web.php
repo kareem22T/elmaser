@@ -24,6 +24,7 @@ Route::post('/register', [RegisterController::class, 'register'])->name('site.re
 Route::get('/article/{id}', [HomeController::class, 'getArticleIndex']);
 Route::get('/search', [ArticleController::class, 'searchIndex']);
 Route::get('/tag/{name}/{id}', [ArticleController::class, 'tagIndex']);
+Route::get('/author/{name}/{id}', [ArticleController::class, 'authorIndex']);
 Route::get('/category/{id}', [ArticleController::class, 'categoryIndex']);
 
 Route::get('/about-us', function() {

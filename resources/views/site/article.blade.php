@@ -207,7 +207,7 @@
                         @if($article->tags && $article->tags->count() > 0)
                         <div class="tags">
                             @foreach ($article->tags as $tag)
-                                <a href="/search?s={{$tag->name}}&tag_id={{$tag->id}}">{{ $tag->name }}</a>
+                                <a href="/tag/{{$tag->name}}/{{$tag->id}}">{{ $tag->name }}</a>
                             @endforeach
                         </div>
                         <br>

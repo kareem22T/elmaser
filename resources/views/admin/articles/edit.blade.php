@@ -37,9 +37,20 @@
                         </select>
                     </div>
                     <div class="w-50">
-                        <input type="text" name="author" id="author" class="form-control" placeholder="اسم الكاتب" v-model="author">
+                        @php
+                            $authors = App\Models\Author::all();
+                        @endphp
+                        <label for="symbol" class="form-label">الناشر *</label>
+                        <select name="cat_type" id="cat_type" class="form-control" v-model="author_id">
+                            @foreach ($authors as $author)
+
+                                <option value="{{$author->id}}">
+                                    {{$author->name}}
+                                </option>
+                            @endforeach
+                        </select>
                     </div>
-                </div>
+                    </div>
                 <!-- Swiper -->
                 <div class="w-100 mb-4 pb-3">
                     <div class="w-100 p-3">
@@ -227,6 +238,7 @@ createApp({
     return {
       title: '',
       author: '',
+      author_id: '',
       intro: '',
       content: '',
       cat_id: null,
@@ -292,6 +304,7 @@ createApp({
                 author_name: author_name,
                 cat_id: cat_id,
                 article_id: this.article_id,
+                author_id: this.author_id,
                 tags: tags,
                 draft: draft ? draft : null,
                 intro: this.intro,
@@ -451,7 +464,7 @@ createApp({
                 this.Article_data = response.data.data
                 this.title = this.Article_data.title
                 this.sub_title = this.Article_data.sub_title
-                this.author = this.Article_data.author_name
+                this.author_id = this.Article_data.author.id
                 this.content = this.Article_data.content
                 this.intro = this.Article_data.intro
                 this.preview_img = this.Article_data.thumbnail_path

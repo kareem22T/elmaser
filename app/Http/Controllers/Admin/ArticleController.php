@@ -118,6 +118,36 @@ class ArticleController extends Controller
 
         return view("site.search")->with(compact(["articles", "search_word"]));
     }
+
+    public function tagIndex(Request $request) {
+        $articles = Article::latest()->with(['category'])
+                            ->where(function ($query) use ($request) {
+                                $query->where('title', 'like', '%' . $request->s . '%')
+                                    ->orWhere('content', 'like', '%' . $request->s . '%')
+                                    ->orWhere('author_name', 'like', '%' . $request->s . '%');
+                            })
+                            ->where('isDraft', false)
+                            ->paginate(10);
+
+        $search_word =  (string) $request->s;
+
+        if ($request->tag_id) {
+            $tag = Tag::with(['articles' => function ($query) {
+
+                $query->latest();
+
+            }])->find($request->tag_id);
+
+
+            $articles = $tag->articles()->paginate(10);
+        }
+
+        $tag_id = $request->tag_id;
+        if ($request->tag_id)
+            return view("site.tag")->with(compact(["articles", "search_word", "tag_id"]));
+
+        return view("site.tag")->with(compact(["articles", "search_word"]));
+    }
     public function categoryIndex(Request $request) {
 
         if ($request->id == 0) :
@@ -202,7 +232,7 @@ class ArticleController extends Controller
     }
 
     public function getArticleById(Request $request) {
-        $Article = Article::with('category')->with('tags')->find($request->article_id);
+        $Article = Article::with('category', "author")->with('tags')->find($request->article_id);
 
         return $this->jsonData(true, true, '', [], $Article);
     }

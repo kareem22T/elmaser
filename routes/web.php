@@ -23,6 +23,7 @@ Route::middleware('auth:sanctum')->get('/get-user', [RegisterController::class, 
 Route::post('/register', [RegisterController::class, 'register'])->name('site.register');
 Route::get('/article/{id}', [HomeController::class, 'getArticleIndex']);
 Route::get('/search', [ArticleController::class, 'searchIndex']);
+Route::get('/tag/{name}/{id}', [ArticleController::class, 'tagIndex']);
 Route::get('/category/{id}', [ArticleController::class, 'categoryIndex']);
 
 Route::get('/about-us', function() {

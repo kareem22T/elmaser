@@ -141,7 +141,7 @@
                                 <img src="{{$article->thumbnail_path}}" alt="">
                             </a>
                             <div class="text">
-                                <a  href="/category/{{$article->category}}">
+                                <a  href="/category/{{$article->category->id}}">
                                     <h4 class="head-eg">{{ $article->category->main_name }}</h4>
                                 </a>
                                 <a  href="/article/{{$article->id}}">

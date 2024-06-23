@@ -140,7 +140,7 @@
             <script>
                 var isMobile = window.innerWidth <= 767;
                 if (isMobile)
-                    startTicker('ticker-box', {speed: 16, delay:500});
+                    startTicker('ticker-box', {speed: 11, delay:500});
                 else
                     startTicker('ticker-box', {speed: 1, delay:500});
             </script>

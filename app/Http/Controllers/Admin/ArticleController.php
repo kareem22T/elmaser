@@ -144,6 +144,7 @@ class ArticleController extends Controller
     public function authorIndex($name, $id) {
 
         $search_word = "";
+        $author_desc = "";
         if ($id) {
             $tag = Author::with(['articles' => function ($query) {
 
@@ -154,13 +155,14 @@ class ArticleController extends Controller
 
             $articles = $tag?->articles()->paginate(10);
             $search_word =  $tag?->name;
+            $author_desc =  $tag?->description;
         }
 
         $tag_id = $id;
         if ($id)
-            return view("site.author")->with(compact(["articles", "search_word", "tag_id"]));
+            return view("site.author")->with(compact(["articles", "search_word", "tag_id", "author_desc"]));
 
-        return view("site.author")->with(compact(["articles", "search_word"]));
+        return view("site.author")->with(compact(["articles", "search_word", "author_desc"]));
     }
     public function categoryIndex(Request $request) {
 

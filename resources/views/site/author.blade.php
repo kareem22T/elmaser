@@ -55,6 +55,9 @@
                 <h1 >مقالات : {{ $search_word}}</h1>
                 <input type="hidden" name="search_words" id="search_words" value="{{ $search_word}}">
                 @endif
+                @if($author_desc)
+                <p>{{$author_desc}}</p>
+                @endif
             </div>
             <input type="hidden" name="search_words" id="search_words" value="{{ $search_word}}">
         @endif

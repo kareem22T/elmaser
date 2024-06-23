@@ -26,6 +26,12 @@
                         <input type="text" class="form-control" id="name" v-model="name">
                     </div>
                 </div>
+                <div class="w-100">
+                    <div>
+                        <label for="description" class="form-label">وصف الناشر *</label>
+                        <input type="text" class="form-control" id="description" v-model="description">
+                    </div>
+                </div>
             </div>
 
             <div class="mb-3 w-100">
@@ -97,6 +103,7 @@ createApp({
     return {
       thumbnail: null,
       name: '',
+      description: '',
       content: '',
       images: null,
       showImages: false,
@@ -139,6 +146,7 @@ createApp({
         try {
             const response = await axios.post(`{{ route('author.put') }}`, {
                 name: this.name,
+                description: this.description,
             },
             {
                 headers: {

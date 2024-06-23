@@ -72,16 +72,18 @@ class AuthorsController extends Controller
     public function put(Request $request) {
         $validator = Validator::make($request->all(), [
             'name' => ['required'],
+            'description' => ['required'],
         ], [
             'name.required' => 'اسم الناشر مطلوب',
         ]);
 
         if ($validator->fails()) {
-            return $this->jsondata(false, 'Add failed', [$validator->errors()->first()], []);
+            return $this->jsondata(false, null, 'Add failed', [$validator->errors()->first()], []);
         }
 
         $createAuthor = Author::create([
             'name' => $request->name,
+            'description' => $request->description,
         ]);
 
         if ($createAuthor)
@@ -97,6 +99,7 @@ class AuthorsController extends Controller
     public function update(Request $request) {
         $validator = Validator::make($request->all(), [
             'name' => ['required'],
+            'description' => ['required'],
         ], [
             'name.required' => 'اسم الناشر مطلوب',
         ]);
@@ -107,6 +110,7 @@ class AuthorsController extends Controller
 
         $Author = Author::find($request->id);
         $Author->name = $request->name;
+        $Author->description = $request->description;
         $Author->save();
 
         if ($Author)

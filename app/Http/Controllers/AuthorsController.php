@@ -72,7 +72,6 @@ class AuthorsController extends Controller
     public function put(Request $request) {
         $validator = Validator::make($request->all(), [
             'name' => ['required'],
-            'description' => ['required'],
         ], [
             'name.required' => 'اسم الناشر مطلوب',
         ]);
@@ -83,7 +82,7 @@ class AuthorsController extends Controller
 
         $createAuthor = Author::create([
             'name' => $request->name,
-            'description' => $request->description,
+            'description' => $request->description ?? '',
         ]);
 
         if ($createAuthor)

@@ -4,7 +4,7 @@
 
 @section('authors_add_active', 'active')
 
-@if($Author)
+@if($author)
 @section('content')
 <h3 class="mb-5">
     تعديل بيانات الناشر

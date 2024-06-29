@@ -250,7 +250,7 @@
                             @foreach($category?->articles as $index => $article)
                                 <a href="/article/{{$article->id}}" class="swiper-slide" style="text-decoration: none">
                                     <div class="img">
-                                        <img src="./assets/imgs/trend.jpg" alt="">
+                                        <img src="{{ $article->thumbnail_path }}" alt="">
                                     </div>
                                     <div class="text">
                                         <p>{{ $article->title }}</p>

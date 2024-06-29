@@ -106,12 +106,12 @@ class AuthorsController extends Controller
             return $this->jsondata(false, 'update failed', [$validator->errors()->first()], []);
         }
 
-        $Author = Author::find($request->id);
+        $author = Author::find($request->id);
         $author->name = $request->name;
         $author->description = $request->description ?? "";
         $author->save();
 
-        if ($Author)
+        if ($author)
             return $this->jsonData(true, true, 'تم تعديل بيانات الناشر بنجاح', [], []);
     }
 

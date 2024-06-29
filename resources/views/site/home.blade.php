@@ -15,7 +15,7 @@
             </a>
         @endif
     @endif
-    <div>
+    <div style="max-width: 100vw;">
         <div class="container">
             @if(isset($settingsArray["hero_first_ad"]) && $settingsArray["hero_first_ad"]["value"])
             <div class="top_ad">

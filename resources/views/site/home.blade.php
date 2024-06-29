@@ -193,7 +193,10 @@
                                     <div class="img">
                                         <img src="{{ $article->thumbnail_path }}" alt="">
                                     </div>
-                                    <p>{{ $article->title }}</p>
+                                    <p style="
+                                      height: 80px;
+  overflow: hidden;
+  text-overflow: ellipsis;">{{ $article->title }}</p>
                                 </a>
                             @endforeach
                         </div>

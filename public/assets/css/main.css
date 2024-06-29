@@ -925,16 +925,16 @@ section > div > .container .main_articles .mainSlider .swiper-slide .text .head 
   }
 }
 section > div > .container .main_articles .mainSlider .swiper-slide .text p {
-  border-top: 3px solid #cc3434;
-  padding: 1rem;
-  width: 100%;
-  font-size: clamp(1.375rem, -1.375rem + 4vw, 1.875rem);
-  background: rgba(0, 13, 23, 0.6392156863);
-  color: #fff;
-  font-weight: 700;
-  line-height: clamp(2.1875rem, -2.9688rem + 7.5vw, 3.125rem);
-  margin: 0;
-  font-size: 1.5rem;
+    border-top: 3px solid #cc3434;
+    padding: 1rem;
+    width: 100%;
+    font-size: clamp(1.375rem, -1.375rem + 4vw, 1.875rem);
+    background: rgba(0, 13, 23, 0.6392156863);
+    color: #fff;
+    font-weight: 700;
+    line-height: 42px;
+    margin: 0;
+    font-size: 1.5rem;
 }
 @media (max-width: 1199.98px) {
   section > div > .container .main_articles .mainSlider .swiper-slide .text p {

@@ -1211,6 +1211,7 @@ section .borsa .swiper-pagination .swiper-pagination-bullet {
 }
 section .borsa .swiper-slide {
   text-decoration: none;
+  margin-bottom: 16px;
 }
 section .borsa .swiper-slide .img {
   width: 100%;

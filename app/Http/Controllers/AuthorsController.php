@@ -91,8 +91,8 @@ class AuthorsController extends Controller
 
 
     public function edit($id) {
-        $Author = Author::find($id);
-        return view('admin.author_edit')->with(compact('Author'));
+        $author = Author::find($id);
+        return view('admin.author_edit')->with(compact('author'));
     }
 
     public function update(Request $request) {

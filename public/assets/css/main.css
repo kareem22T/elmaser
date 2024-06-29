@@ -1541,3 +1541,18 @@ footer .container p {
 }
 
 /*# sourceMappingURL=main.css.map */
+
+
+@media (max-width: 757.98px) {
+    header .head .container .logo {
+        width: 120px;
+    }
+    main >div {
+        max-width: 100vw;
+    }
+    .logo_wrapper .text {
+        font-size: 10px;
+        font-weight: 600;
+        margin-right: -8px;
+    }
+}

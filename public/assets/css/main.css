@@ -585,6 +585,7 @@ header .head .container .head_advertisment {
   justify-content: center;
   align-items: start;
   padding: 0 16px;
+  overflow: hidden;
   max-width: calc(100% - 16px);
 }
 @media (max-width: 575.98px) {
@@ -933,6 +934,7 @@ section > div > .container .main_articles .mainSlider .swiper-slide .text p {
   font-weight: 700;
   line-height: clamp(2.1875rem, -2.9688rem + 7.5vw, 3.125rem);
   margin: 0;
+  font-size: 1.5rem;
 }
 @media (max-width: 1199.98px) {
   section > div > .container .main_articles .mainSlider .swiper-slide .text p {
@@ -1174,7 +1176,26 @@ section .borsa {
   margin-top: 2rem;
   padding: 1.2rem;
   background-color: #f8f8f8;
+  position: relative;
 }
+.borsa::after {
+    content: "";
+    width: 50vw;
+    height: 100%;
+    position: absolute;
+    left: 100%;
+    background: #f8f8f8;
+    top: 0;
+  }
+.borsa::before {
+    content: "";
+    width: 50vw;
+    height: 100%;
+    position: absolute;
+    right: 100%;
+    background: #f8f8f8;
+    top: 0;
+  }
 section .borsa .borsaSlider {
   padding-bottom: 40px;
   max-width: 100%;
@@ -1211,6 +1232,13 @@ section .borsa .swiper-slide .text p {
   line-height: 25px;
   text-align: center;
   color: #4f4f4f;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-height: 3em; /* Assuming line-height is 1.5em */
+  line-height: 1.5em; /* Adjust based on your line height */
 }
 section .borsa .swiper-slide .text .date {
   font-size: 16px;

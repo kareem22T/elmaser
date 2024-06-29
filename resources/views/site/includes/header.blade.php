@@ -138,11 +138,36 @@
                 @endif
             </div>
             <script>
+                function getBrowser() {
+                    var ua = navigator.userAgent;
+                    if (ua.indexOf("Chrome") > -1 && ua.indexOf("Edg") === -1 && ua.indexOf("OPR") === -1) {
+                        return "Chrome";
+                    } else if (ua.indexOf("Firefox") > -1) {
+                        return "Firefox";
+                    } else if (ua.indexOf("Safari") > -1 && ua.indexOf("Chrome") === -1) {
+                        return "Safari";
+                    } else if (ua.indexOf("Edg") > -1) {
+                        return "Edge";
+                    } else if (ua.indexOf("OPR") > -1) {
+                        return "Opera";
+                    } else {
+                        return "Other";
+                    }
+                }
+
                 var isMobile = window.innerWidth <= 767;
-                if (isMobile)
-                    startTicker('ticker-box', {speed: 11, delay:500});
-                else
-                    startTicker('ticker-box', {speed: 1, delay:500});
+                var browser = getBrowser();
+                var speed;
+
+                if (browser === "Chrome") {
+                    speed = isMobile ? 11 : 9;
+                } else if (browser === "Firefox") {
+                    speed = isMobile ? 12 : 1;
+                } else {
+                    speed = isMobile ? 13 : 10; // Default speed for other browsers
+                }
+
+                startTicker('ticker-box', {speed: speed, delay: 500});
             </script>
 
           </div>

@@ -28,13 +28,6 @@
             <tr>
                 <th class="border-bottom-0">
                     <h6 class="fw-semibold mb-0 d-inline-flex align-items-center">Id</h6>
-                    {{-- <a href="" class="ml-2 sort text-dark">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrows-sort" width="1rem" height="1rem" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                            <path d="M3 9l4 -4l4 4m-4 -4v14"></path>
-                            <path d="M21 15l-4 4l-4 -4m4 4v-14"></path>
-                        </svg>
-                    </a> --}}
                 </th>
                 <th class="border-bottom-0">
                     <h6 class="fw-semibold mb-0 d-inline-flex align-items-center">العنوان</h6>
@@ -69,11 +62,17 @@
         </tbody>
         </table>
     </div>
-    <div class="pagination w-100 d-flex gap-2 justify-content-center mt-3" v-if="last_page > 1">
-        <div v-for="page_num in last_page" :key="page_num" >
-            <label :for="`page_num_${page_num}`" class="btn btn-primary" :class="page_num == page ? 'active' : ''">@{{ page_num }}</label>
-            <input type="radio" class="d-none" name="page_num" :id="`page_num_${page_num}`" v-model="page" :value="page_num" @change="search == '' ? getarticles() : getSearch(this.search)">
+    <div class="pagination w-100 d-flex gap-2 justify-content-center mt-3" v-if="last_page > 1" dir="ltr">
+        <button class="btn btn-primary" :disabled="page === 1" @click="goToFirstPage">الاولي</button>
+        <button class="btn btn-primary" :disabled="page === 1" @click="goToPreviousPage">السابقة</button>
+
+        <div v-for="page_num in visiblePages" :key="page_num">
+          <label :for="`page_num_${page_num}`" class="btn btn-primary" :class="page_num === page ? 'active' : ''">@{{ page_num }}</label>
+          <input type="radio" class="d-none" name="page_num" :id="`page_num_${page_num}`" v-model="page" :value="page_num" @change="pageChanged">
         </div>
+
+        <button class="btn btn-primary" :disabled="page === last_page" @click="goToNextPage">التالية</button>
+        <button class="btn btn-primary" :disabled="page === last_page" @click="goToLastPage">الاخيرة</button>
     </div>
     <h4 class="text-center">
         @{{ !articles_data || articles_data.length == 0 ? 'لا يوجد اي اخبار' : '' }}
@@ -88,7 +87,7 @@
             <form @submit.prevent>
                 <h5 class="mb-3 text-center">هل انت متاكد من حذف هذا @{{ article_name }} الخبر؟</h5>
                 <div class="btns d-flex w-100 justify-content-between gap-3">
-                    <button class="btn btn-light w-100" @click="delete_pop_up = false; getValus(null, null, null)">Cancel</button>
+                    <button class="btn btn-light w-100" @click="delete_pop_up = false; getValues(null, null)">Cancel</button>
                     <button class="btn btn-danger w-100" @click="deletearticle(article_id)">delete</button>
                 </div>
             </form>
@@ -99,7 +98,7 @@
 
 @section('scripts')
 <script>
-const { createApp, ref } = Vue
+const { createApp } = Vue
 
 createApp({
     data() {
@@ -108,10 +107,29 @@ createApp({
             article_name: null,
             delete_pop_up: false,
             articles_data: null,
-            search: null,
+            search: '',
             page: 1,
             total: null,
             last_page: null
+        }
+    },
+    computed: {
+        visiblePages() {
+            const range = 8;
+            let start = Math.max(this.page - Math.floor(range / 2), 1);
+            let end = start + range - 1;
+
+            if (end > this.last_page) {
+                end = this.last_page;
+                start = Math.max(end - range + 1, 1);
+            }
+
+            const pages = [];
+            for (let i = start; i <= end; i++) {
+                pages.push(i);
+            }
+
+            return pages;
         }
     },
     methods: {
@@ -120,8 +138,7 @@ createApp({
             try {
                 const response = await axios.post(`/admin/articles/delete`, {
                     article_id: article_id,
-                },
-                );
+                });
                 if (response.data.status === true) {
                     document.getElementById('errors').innerHTML = ''
                     let error = document.createElement('div')
@@ -171,8 +188,7 @@ createApp({
             try {
                 const response = await axios.post(`{{route('article.make.important')}}`, {
                     article_id: article_id
-                },
-                );
+                });
                 if (response.data.status === true) {
                     document.getElementById('errors').innerHTML = ''
                     let error = document.createElement('div')
@@ -220,9 +236,7 @@ createApp({
         async getarticles() {
             $('.loader').fadeIn().css('display', 'flex')
             try {
-                const response = await axios.post(`/admin/articles?page=${this.page}`, {
-                },
-                );
+                const response = await axios.post(`/admin/articles?page=${this.page}`);
                 if (response.data.status === true) {
                     $('.loader').fadeOut()
                     this.articles_data = response.data.data.data
@@ -252,7 +266,7 @@ createApp({
                 document.getElementById('errors').append(err)
                 $('#errors').fadeIn('slow')
                 $('.loader').fadeOut()
-                this.languages_data = false
+                this.articles_data = false
                 setTimeout(() => {
                     $('#errors').fadeOut('slow')
                 }, 3500);
@@ -264,8 +278,7 @@ createApp({
             try {
                 const response = await axios.post(`/admin/articles/search?page=${this.page}`, {
                     search_words: search_words,
-                },
-                );
+                });
                 if (response.data.status === true) {
                     this.articles_data = response.data.data.data
                     this.total = response.data.data.total
@@ -293,7 +306,7 @@ createApp({
                 document.getElementById('errors').append(err)
                 $('#errors').fadeIn('slow')
                 $('.loader').fadeOut()
-                this.languages_data = false
+                this.articles_data = false
                 setTimeout(() => {
                     $('#errors').fadeOut('slow')
                 }, 3500);
@@ -304,12 +317,38 @@ createApp({
         getValues(article_id, article_name) {
             this.article_id = article_id
             this.article_name = article_name
+        },
+        goToFirstPage() {
+            this.page = 1;
+            this.fetchArticles();
+        },
+        goToPreviousPage() {
+            if (this.page > 1) {
+                this.page -= 1;
+                this.fetchArticles();
+            }
+        },
+        goToNextPage() {
+            if (this.page < this.last_page) {
+                this.page += 1;
+                this.fetchArticles();
+            }
+        },
+        goToLastPage() {
+            this.page = this.last_page;
+            this.fetchArticles();
+        },
+        pageChanged() {
+            this.fetchArticles();
+        },
+        fetchArticles() {
+            this.search === '' ? this.getarticles() : this.getSearch(this.search);
         }
     },
     created() {
-        this.getarticles()
-        $('.loader').fadeOut()
-    },
+        this.getarticles();
+        $('.loader').fadeOut();
+    }
 }).mount('#word_prev')
 </script>
 @endsection

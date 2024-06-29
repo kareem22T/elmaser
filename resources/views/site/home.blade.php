@@ -185,7 +185,7 @@
         <div class="economics">
             <div class="container">
                 @if ($categories_per_home && count($categories_per_home )> 0)
-                    @foreach (array_slice($categories_per_home, 0, 15) as $index => $category)
+                    @foreach (array_slice($categories_per_home, 0, 4) as $index => $category)
                         <div>
                             <h4>{{$category?->main_name}} <ion-icon name="ellipsis-horizontal-outline"></ion-icon></h4>
                             @foreach($category?->articles as $index => $article)
@@ -240,7 +240,7 @@
             </div>
         @endif
         @if ($categories_per_home && count($categories_per_home )> 0)
-        @foreach (array_slice($categories_per_home, 20) as $index => $category)
+        @foreach (array_slice($categories_per_home, 4) as $index => $category)
             <div class="borsa-2">
                 <div class="container">
                     <h1 class="head-dark head"><i class="fa-solid fa-chart-simple"></i>{{$category?->main_name}} <span class="line"></span>

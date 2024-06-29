@@ -11,7 +11,7 @@
 @endphp
 
 
-<footer>
+<footer style="margin-top: 32PX">
     <div class="container">
         <div class="logo_wrapper">
             <a href="/">

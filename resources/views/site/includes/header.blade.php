@@ -160,7 +160,7 @@
                 var speed;
 
                 if (browser === "Chrome") {
-                    speed = isMobile ? 11 : 9;
+                    speed = isMobile ? 11 : 10;
                 } else if (browser === "Firefox") {
                     speed = isMobile ? 12 : 1;
                 } else {

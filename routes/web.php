@@ -21,12 +21,15 @@ Route::get('/', [HomeController::class, 'getIndex'])->name('site.home');
 Route::get('/register', [RegisterController::class, 'getRegisterIndex']);
 Route::middleware('auth:sanctum')->get('/get-user', [RegisterController::class, 'getUser'])->name('site.get-user');
 Route::post('/register', [RegisterController::class, 'register'])->name('site.register');
-Route::get('/article/{id}', [HomeController::class, 'getArticleIndex']);
+Route::get('/article/{id}', [HomeController::class, 'getArticleIndex']); // Route for individual articles
+
+// Routes for search, tags, authors, categories
 Route::get('/search', [ArticleController::class, 'searchIndex']);
 Route::get('/tag/{name}/{id}', [ArticleController::class, 'tagIndex']);
 Route::get('/author/{name}/{id}', [ArticleController::class, 'authorIndex']);
 Route::get('/category/{id}', [ArticleController::class, 'categoryIndex']);
 
+// Static pages
 Route::get('/about-us', function() {
     return view("site.about");
 });
@@ -39,3 +42,8 @@ Route::get('/about-ads', function() {
 Route::get('/contact-us', function() {
     return view("site.contact");
 });
+
+// Redirect route for non-conflicting IDs
+Route::get('/{id}', function($id) {
+    return redirect()->to('/article/'. $id );
+})->where("id", '[0-9]+');

@@ -98,7 +98,6 @@ class AuthorsController extends Controller
     public function update(Request $request) {
         $validator = Validator::make($request->all(), [
             'name' => ['required'],
-            'description' => ['required'],
         ], [
             'name.required' => 'اسم الناشر مطلوب',
         ]);
@@ -109,7 +108,7 @@ class AuthorsController extends Controller
 
         $Author = Author::find($request->id);
         $author->name = $request->name;
-        $author->description = $request->description;
+        $author->description = $request->description ?? "";
         $author->save();
 
         if ($Author)

@@ -174,8 +174,8 @@ class ArticleController extends Controller
         else :
             $category = Category::with("articles")->find($request->id);
 
-            $articles = $category->articles()->where("isDraft", false)->latest()->paginate(20);
-            $search_word = $category->main_name;
+            $articles = $category?->articles()->where("isDraft", false)->latest()->paginate(20);
+            $search_word = $category?->main_name;
 
             return view("site.category")->with(compact(["articles", "search_word", "category"]));
         endif;

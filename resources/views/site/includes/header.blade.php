@@ -92,7 +92,7 @@
                         <a href="/category/{{$item->id}}">{{$item->main_name}}</a>
                     @endforeach
                 </div>
-                <div class="mobil_links">
+                <div class="mobil_links" style="overflow: auto">
                     <a href="/" class="active">الرئيسية</a>
                     @foreach ($categories as $item)
                         <a href="/category/{{$item->id}}">{{$item->main_name}}</a>

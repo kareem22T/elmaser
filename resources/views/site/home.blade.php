@@ -46,8 +46,8 @@
                             </a>
                             <div class="text" style="width: 100%">
                                 <div class="head">
-                                    <a href="/category/{{$main_article->category->id}}" style="color: #fff; text-decoration: none">
-                                        <i class="fa-solid fa-list"></i> {{ $main_article->category->main_name }}
+                                    <a href="/category/{{$main_article->category?->id}}" style="color: #fff; text-decoration: none">
+                                        <i class="fa-solid fa-list"></i> {{ $main_article->category?->main_name }}
                                     </a>
                                 </div>
                                 <a href="/article/{{$main_article->id}}" style="width: 100%;display: block;text-decoration: none;">
@@ -141,8 +141,8 @@
                                 <img src="{{$article->thumbnail_path}}" alt="">
                             </a>
                             <div class="text">
-                                <a  href="/category/{{$article->category->id}}">
-                                    <h4 class="head-eg">{{ $article->category->main_name }}</h4>
+                                <a  href="/category/{{$article->category?->id}}">
+                                    <h4 class="head-eg">{{ $article->category?->main_name }}</h4>
                                 </a>
                                 <a  href="/article/{{$article->id}}">
                                     <p>{{ $article->title }}</p>
@@ -187,9 +187,9 @@
                 @if ($categories_per_home && count($categories_per_home )> 0)
                     @foreach (array_slice($categories_per_home, 0, 4) as $index => $category)
                         <div>
-                            <h4>{{$category->main_name}} <ion-icon name="ellipsis-horizontal-outline"></ion-icon></h4>
-                            @foreach($category->articles as $index => $article)
-                                <a href="/article/{{$article->id}}" class="{{ $index === 0 ? 'main-article eg' : '' }}" style="{{'border-color:' . $category->color}}">
+                            <h4>{{$category?->main_name}} <ion-icon name="ellipsis-horizontal-outline"></ion-icon></h4>
+                            @foreach($category?->articles as $index => $article)
+                                <a href="/article/{{$article->id}}" class="{{ $index === 0 ? 'main-article eg' : '' }}" style="{{'border-color:' . $category?->color}}">
                                     <div class="img">
                                         <img src="{{ $article->thumbnail_path }}" alt="">
                                     </div>
@@ -226,7 +226,7 @@
                                 <img src="{{ $visit->article->thumbnail_path }}" alt="">
                             </a>
                             <div class="text">
-                                <a href="category/{{ $visit->article->category->id }}"> {{ $visit->article->category->main_name }} <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                                <a href="category/{{ $visit->article->category?->id }}"> {{ $visit->article->category?->main_name }} <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
                                 <a href="article/{{ $visit->article->id }}">{{ $visit->article->title }}</a>
                             </div>
                         </div>
@@ -240,11 +240,11 @@
         @foreach (array_slice($categories_per_home, 4) as $index => $category)
             <div class="borsa-2">
                 <div class="container">
-                    <h1 class="head-dark head"><i class="fa-solid fa-chart-simple"></i>{{$category->main_name}} <span class="line"></span>
+                    <h1 class="head-dark head"><i class="fa-solid fa-chart-simple"></i>{{$category?->main_name}} <span class="line"></span>
                     </h1>
                     <div class="swiper borsaSlider"  dir="rtl">
                         <div class="swiper-wrapper">
-                            @foreach($category->articles as $index => $article)
+                            @foreach($category?->articles as $index => $article)
                                 <a href="/article/{{$article->id}}" class="swiper-slide" style="text-decoration: none">
                                     <div class="img">
                                         <img src="./assets/imgs/trend.jpg" alt="">

@@ -9,15 +9,15 @@
 <div class="d-flex gap-2 justify-content-between mb-3">
     <div class="w-75">
         <h3>
-            {{ $category->main_name }} Category
+            {{ $category?->main_name }} Category
         </h3>
         <p>
-            {{ $category->description }}
+            {{ $category?->description }}
         </p>
-        <a href="/admin/categories/edit/{{ $category->id }}" class="btn btn-success">Edit Category</a>
+        <a href="/admin/categories/edit/{{ $category?->id }}" class="btn btn-success">Edit Category</a>
     </div>
     <div class="img card p-2" style="max-height: 150px; max-width: 140px">
-        <img src="{{$category->thumbnail_path ?  $category->thumbnail_path : '/dashboard/images/add_image.svg' }}" id="preview" alt="img logo" style="width: 100%; max-width: 100%;object-fit: contain;height: 100%;">                                                
+        <img src="{{$category?->thumbnail_path ?  $category?->thumbnail_path : '/dashboard/images/add_image.svg' }}" id="preview" alt="img logo" style="width: 100%; max-width: 100%;object-fit: contain;height: 100%;">
     </div>
 </div>
 @endif
@@ -28,7 +28,7 @@
     <div class="card-body p-4">
     <div class="table-responsive">
         <table class="table text-nowrap mb-0 align-middle">
-        @if ($category->sub_categories->count() > 0)
+        @if ($category?->sub_categories->count() > 0)
         <thead class="text-dark fs-4">
             <tr>
                 <th class="border-bottom-0">
@@ -54,7 +54,7 @@
         </thead>
         @endif
         <tbody>
-            @foreach ($category->sub_categories as $cat)
+            @foreach ($category?->sub_categories as $cat)
                 <tr>
                     <td class="border-bottom-0"><h6 class="fw-semibold mb-0">{{$cat->id}}</h6></td>
                     <td class="border-bottom-0"><h6 class="fw-semibold mb-0">{{$cat->main_name}}</h6></td>
@@ -73,7 +73,7 @@
         </table>
     </div>
     <h4 class="text-center mt-2">
-        {{ $category->sub_categories->count() == 0 ? 'There is no any Sub Category' : '' }}
+        {{ $category?->sub_categories->count() == 0 ? 'There is no any Sub Category' : '' }}
     </h4>
     </div>
 

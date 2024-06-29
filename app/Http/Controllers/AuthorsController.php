@@ -109,9 +109,9 @@ class AuthorsController extends Controller
         }
 
         $Author = Author::find($request->id);
-        $Author->name = $request->name;
-        $Author->description = $request->description;
-        $Author->save();
+        $author?->name = $request->name;
+        $author?->description = $request->description;
+        $author?->save();
 
         if ($Author)
             return $this->jsonData(true, true, 'تم تعديل بيانات الناشر بنجاح', [], []);
@@ -127,8 +127,8 @@ class AuthorsController extends Controller
         }
 
         $Author = Author::with('articles')->find($request->author_id);
-        $Author->articles()->delete();
-        $Author->delete();
+        $author?->articles()->delete();
+        $author?->delete();
 
         if ($Author)
             return $this->jsonData(true, null, $request->file_name . 'تم حف الناشر بنجاح', [], []);

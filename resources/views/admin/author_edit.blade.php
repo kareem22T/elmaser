@@ -102,8 +102,8 @@ createApp({
   data() {
     return {
       thumbnail: null,
-      name: '{{$Author->name}}',
-      description: '{{$Author->description}}',
+      name: '{{$author?->name}}',
+      description: '{{$author?->description}}',
       content: '',
       images: null,
       showImages: false,
@@ -112,7 +112,7 @@ createApp({
       choosed_img: null,
       current_article_id: null,
       search_tags: null,
-      preview_img: '{{$Author->profile_path}}',
+      preview_img: '{{$author?->profile_path}}',
       search: null,
       page: 1,
       total: 0,
@@ -123,7 +123,7 @@ createApp({
       code: '',
       showCodePopUp: false,
       album_imgs: [],
-      brief: '{{$Author->brief}}',
+      brief: '{{$author?->brief}}',
     }
   },
   methods: {
@@ -144,7 +144,7 @@ createApp({
       $('.loader').fadeIn().css('display', 'flex')
         try {
             const response = await axios.post(`{{ route('author.update') }}`, {
-                id:'{{$Author->id}}',
+                id:'{{$author?->id}}',
                 name: this.name,
                 description: this.description,
             },

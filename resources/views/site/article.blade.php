@@ -5,7 +5,7 @@
 @section('content')
 @if ($article)
 @section("heads")
-<meta property="og:type" content="{{ $article->category->name }}">
+<meta property="og:type" content="{{ $article->category?->name }}">
 <meta property="og:title" content="{{ $article->title }}">
 <meta property="og:description" content="{{ $article->intro }}">
 <meta property="og:image" content="{{ "https://elgomhuriaeljadida.com" . $article->thumbnail_path }}?v={{time()}}">
@@ -121,19 +121,6 @@
         "الأحد", "الإثنين", "الثلاثاء", "الأربعاء", "الخميس", "الجمعة", "السبت"
         );
 
-        function custom_slug($string) {
-            // Remove spaces and replace with hyphens
-            $string = preg_replace('/\s+/', '-', $string);
-
-            // Remove any characters that are not alphanumeric, hyphens, or Arabic characters
-            $string = preg_replace('/[^\p{L}\p{N}\-]+/u', '', $string);
-
-            // Convert multiple hyphens into a single hyphen
-            $string = preg_replace('/-+/', '-', $string);
-
-            // Trim hyphens from the beginning and end of the string
-            return trim($string, '-');
-        }
     @endphp
 
     @if(isset($settingsArray["main_right"]) && $settingsArray["main_right"]["value"])
@@ -173,15 +160,15 @@
                         <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                         <path d="M15 6l-6 6l6 6" />
                     </svg>
-                    <a href="/category/{{ $article->category->id }}" style="text-decoration: none;font-weight: 700;color: #dd5f3c;font-size: 14px;">
-                        {{ $article->category->main_name }}
+                    <a href="/category/{{ $article->category?->id }}" style="text-decoration: none;font-weight: 700;color: #dd5f3c;font-size: 14px;">
+                        {{ $article->category?->main_name }}
                     </a>
                 </div>
                 <h1>{{ $article->title }}</h1>
                 <h2>{{ $article->sub_title }}</h2>
                 <div class="details">
                     <p>
-                        <a href="/author/{{custom_slug($article->author->name)}}/{{$article->author->id}}" style="text-decoration: none;color: #212529;">
+                        <a href="/author/{{trim(preg_replace('/-+/', '-', preg_replace('/[^\p{L}\p{N}\-]+/u', '', preg_replace('/\s+/', '-', ($article->author?->name)))), '-')}}/{{$article->author?->id}}" style="text-decoration: none;color: #212529;">
                             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-news" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                 <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                                 <path d="M16 6h3a1 1 0 0 1 1 1v11a2 2 0 0 1 -4 0v-13a1 1 0 0 0 -1 -1h-10a1 1 0 0 0 -1 1v12a3 3 0 0 0 3 3h11" />
@@ -189,7 +176,7 @@
                                 <path d="M8 12l4 0" />
                                 <path d="M8 16l4 0" />
                             </svg>
-                            {{ $article->author->name }}
+                            {{ $article->author?->name }}
                         </a>
                     </p>
                     <p>
@@ -215,7 +202,7 @@
                 <div class="articles_wrapper">
                     <article>
                         <div class="thumbnail">
-                            <img src="{{ $article->thumbnail_path }}" alt="">
+                            <img src="{{ $article->thumbnail_path }}" alt="" style="max-height: 500px; width: 100%;object-fit:cover">
                         </div>
                         <p>
                             {!! $article->content !!}
@@ -223,7 +210,7 @@
                         @if($article->tags && $article->tags->count() > 0)
                         <div class="tags">
                             @foreach ($article->tags as $tag)
-                                <a href="/tag/{{custom_slug($tag->name) }}/{{$tag->id}}">{{ $tag->name }}</a>
+                                <a href="/tag/{{trim(preg_replace('/-+/', '-', preg_replace('/[^\p{L}\p{N}\-]+/u', '', preg_replace('/\s+/', '-', ($tag->name)))), '-') }}/{{$tag->id}}">{{ $tag->name }}</a>
                             @endforeach
                         </div>
                         <br>

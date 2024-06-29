@@ -44,8 +44,8 @@
                         <select name="cat_type" id="cat_type" class="form-control" v-model="author_id">
                             @foreach ($authors as $author)
 
-                                <option value="{{$author->id}}">
-                                    {{$author->name}}
+                                <option value="{{$author?->id}}">
+                                    {{$author?->name}}
                                 </option>
                             @endforeach
                         </select>

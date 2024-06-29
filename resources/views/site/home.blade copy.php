@@ -117,7 +117,7 @@ $more_visited = App\Models\Visit::with(['article' => function ($query) {
                     @foreach ($categories_per_home as $index => $category)
                         <div class="swiper catSwiper">
                             <div class="swiper-wrapper">
-                                @foreach ($category->articles as $article)
+                                @foreach ($category?->articles as $article)
                                     <div class="swiper-slide">
                                         <a href="article/{{$article->id}}" class="thumbnail">
                                             <img src="{{ $article->thumbnail_path }}" alt="">
@@ -125,8 +125,8 @@ $more_visited = App\Models\Visit::with(['article' => function ($query) {
                                         <div class="text">
                                             <div class="cat-head">
                                                 <span></span>
-                                                <a href="category/{{$category->id}}"  class="cat">
-                                                    {{$category->main_name}}
+                                                <a href="category/{{$category?->id}}"  class="cat">
+                                                    {{$category?->main_name}}
                                                 </a>
                                             </div>
                                             <a href="article/{{$article->id}}"  dir="rtl">
@@ -135,9 +135,9 @@ $more_visited = App\Models\Visit::with(['article' => function ($query) {
                                         </div>
                                     </div>
                                     @endforeach
-                                    <a href="/category/{{$category->id}}" class="swiper-slide last-slide" style="flex-direction: column;width: 513px; margin-right: 30px;display: flex;justify-content: center;align-items: center;font-size: 25px;font-weight: 700;color: var(--secondary-color); ">
-                                        {!! $category->icon !!}
-                                        عرض كل مقالات قسم {{ $category->main_name}}
+                                    <a href="/category/{{$category?->id}}" class="swiper-slide last-slide" style="flex-direction: column;width: 513px; margin-right: 30px;display: flex;justify-content: center;align-items: center;font-size: 25px;font-weight: 700;color: var(--secondary-color); ">
+                                        {!! $category?->icon !!}
+                                        عرض كل مقالات قسم {{ $category?->main_name}}
                                     </a>
                             </div>
                             <div class="navYpag">

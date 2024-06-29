@@ -43,7 +43,7 @@
                 <button class="show_left_nav"><i class="fa fa-bars"></i></button>
                 <div class="links animate__animated">
                     @foreach ($categories as $category)
-                    <a href="/category/{{$category->id}}">{!! $category->icon !!} {{ $category->main_name }} </a>
+                    <a href="/category/{{$category?->id}}">{!! $category?->icon !!} {{ $category?->main_name }} </a>
                     @endforeach
                 </div>
             </div>

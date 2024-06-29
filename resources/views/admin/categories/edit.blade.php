@@ -13,7 +13,7 @@
         <div>
             <div class="w-100 mb-3">
                 <input type="text" class="form-control w-50" id="symbol" v-model="main_name" >
-                <input type="hidden" name="category_id" id="category_id" value="{{ $category->id }}">
+                <input type="hidden" name="category_id" id="category_id" value="{{ $category?->id }}">
             </div>
             <!-- Swiper -->
             <div class="gap-2 w-100 mb-3 pb-3" style="display: grid; grid-template-columns: 1fr 1fr;">

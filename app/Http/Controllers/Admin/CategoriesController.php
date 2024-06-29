@@ -117,7 +117,7 @@ class CategoriesController extends Controller
         $category = Category::find($request->category_id);
 
         $validator = Validator::make($request->all(), [
-            'main_name' => 'required|unique:categories,main_name,'. $category->id,
+            'main_name' => 'required|unique:categories,main_name,'. $category?->id,
             "color" => "required"
         ], [
             'main_name.required' => 'Please write section main name',
@@ -127,10 +127,10 @@ class CategoriesController extends Controller
             return $this->jsondata(false, true, 'Add failed', [$validator->errors()->first()], []);
         }
 
-        $category->main_name = $request->main_name;
-        $category->color = $request->color;
-        $category->description = $request->description ? $request->description : null;
-        $category->save();
+        $category?->main_name = $request->main_name;
+        $category?->color = $request->color;
+        $category?->description = $request->description ? $request->description : null;
+        $category?->save();
 
         if ($category)
             return $this->jsonData(true, true, 'Category has been Updated successfuly', [], []);
@@ -151,12 +151,12 @@ class CategoriesController extends Controller
         }
 
         $category = Category::find($request->cat_id);
-        foreach ($category->articles() as $article) {
+        foreach ($category?->articles() as $article) {
             if ($article->thumbnail_path)
                 File::delete(public_path('/dashboard/images/uploads/articles_thumbnail/' . $article->thumbnail_path));
             $article->delete();
         }
-        $category->delete();
+        $category?->delete();
 
         if ($category)
             return $this->jsonData(true, true, $request->file_name . 'Category has been deleted succussfuly', [], []);

@@ -52,7 +52,7 @@
         @if(isset($search_word) && $search_word)
             <div class="container" dir="rtl">
                 <h1 class="cateory_head">{{ $search_word}}</h1>
-                <p class="category_desc">{{ ($category && $category->description) ?  $category->description : ''}}</p>
+                <p class="category_desc">{{ ($category && $category?->description) ?  $category?->description : ''}}</p>
             </div>
             <input type="hidden" name="search_words" id="search_words" value="{{ $search_word}}">
         @endif

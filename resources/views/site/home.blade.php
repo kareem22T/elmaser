@@ -166,7 +166,7 @@
                     <div class="swiper borsaSlider">
                         <div class="swiper-wrapper">
                             @foreach ($latest_news as $item)
-                            <a href="article/{{$item->id}}" class="swiper-slide">
+                            <a href="/article/{{$item->id}}" class="swiper-slide">
                                 <div class="img">
                                     <img src="{{$item->thumbnail_path}}" alt="">
                                 </div>
@@ -225,12 +225,12 @@
                         @foreach ($more_visited as $visit)
                         @if($visit->article)
                         <div>
-                            <a href="article/{{ $visit->article->id }}" class="img">
+                            <a href="/article/{{ $visit->article->id }}" class="img">
                                 <img src="{{ $visit->article->thumbnail_path }}" alt="">
                             </a>
                             <div class="text">
                                 <a href="category/{{ $visit->article->category?->id }}"> {{ $visit->article->category?->main_name }} <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
-                                <a href="article/{{ $visit->article->id }}">{{ $visit->article->title }}</a>
+                                <a href="/article/{{ $visit->article->id }}">{{ $visit->article->title }}</a>
                             </div>
                         </div>
                         @endif

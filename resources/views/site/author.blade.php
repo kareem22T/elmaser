@@ -82,7 +82,7 @@
                     <div class="side_articles">
                         @foreach ($more_visited as $visit)
                         @if($visit->article)
-                            <a href="article/{{ $visit->article->id }}" class="article">
+                            <a href="/article/{{ $visit->article->id }}" class="article">
                                 <img src="{{ $visit->article->thumbnail_path }}" alt="">
                                 <div class="text">
                                     <i class="fa-solid fa-angle-left"></i>
@@ -111,7 +111,7 @@
                     </div>
                     <div class="side_articles">
                         @foreach ($latest as $article)
-                            <a href="article/{{ $article->id }}" class="article">
+                            <a href="/article/{{ $article->id }}" class="article">
                                 <img src="{{ $article->thumbnail_path }}" alt="">
                                 <div class="text">
                                     <i class="fa-solid fa-angle-left"></i>

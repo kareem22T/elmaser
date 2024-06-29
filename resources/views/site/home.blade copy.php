@@ -36,7 +36,7 @@ $more_visited = App\Models\Visit::with(['article' => function ($query) {
                         <span></span>
                     </div>
                         @foreach ($latestArticles as $article)
-                            <a href="article/{{$article->id}}" class="card">
+                            <a href="/article/{{$article->id}}" class="card">
                                 <p>
                                     {{ $article->title }}
                                 </p>
@@ -55,7 +55,7 @@ $more_visited = App\Models\Visit::with(['article' => function ($query) {
                     @foreach ($more_visited as $visit)
                         {{-- Check if the associated article exists --}}
                         @if($visit->article)
-                            <a href="article/{{ $visit->article->id }}" class="card">
+                            <a href="/article/{{ $visit->article->id }}" class="card">
                                 <p>
                                     {{ $visit->article->title }}
                                 </p>
@@ -119,7 +119,7 @@ $more_visited = App\Models\Visit::with(['article' => function ($query) {
                             <div class="swiper-wrapper">
                                 @foreach ($category?->articles as $article)
                                     <div class="swiper-slide">
-                                        <a href="article/{{$article->id}}" class="thumbnail">
+                                        <a href="/article/{{$article->id}}" class="thumbnail">
                                             <img src="{{ $article->thumbnail_path }}" alt="">
                                         </a>
                                         <div class="text">
@@ -129,7 +129,7 @@ $more_visited = App\Models\Visit::with(['article' => function ($query) {
                                                     {{$category?->main_name}}
                                                 </a>
                                             </div>
-                                            <a href="article/{{$article->id}}"  dir="rtl">
+                                            <a href="/article/{{$article->id}}"  dir="rtl">
                                                 {{Illuminate\Support\Str::limit($article->title, 85)}}
                                             </a>
                                         </div>
@@ -176,7 +176,7 @@ $more_visited = App\Models\Visit::with(['article' => function ($query) {
                         <span></span>
                     </div>
                         @foreach ($latestArticles as $article)
-                            <a href="article/{{$article->id}}" class="card">
+                            <a href="/article/{{$article->id}}" class="card">
                                 <p>
                                     {{ $article->title }}
                                 </p>
@@ -195,7 +195,7 @@ $more_visited = App\Models\Visit::with(['article' => function ($query) {
                     @foreach ($more_visited as $visit)
                         {{-- Check if the associated article exists --}}
                         @if($visit->article)
-                            <a href="article/{{ $visit->article->id }}" class="card">
+                            <a href="/article/{{ $visit->article->id }}" class="card">
                                 <p>
                                     {{ $visit->article->title }}
                                 </p>

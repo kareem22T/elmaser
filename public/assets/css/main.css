@@ -1226,7 +1226,6 @@ section .borsa-2 {
 }
 section .borsa-2 .borsaSlider {
   padding-bottom: 40px;
-  direction: ltr;
   max-width: 100%;
 }
 section .borsa-2 .swiper-pagination {

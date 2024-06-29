@@ -245,7 +245,7 @@
                 <div class="container">
                     <h1 class="head-dark head"><i class="fa-solid fa-chart-simple"></i>{{$category?->main_name}} <span class="line"></span>
                     </h1>
-                    <div class="swiper borsaSlider"  dir="rtl">
+                    <div class="swiper borsaSlider">
                         <div class="swiper-wrapper">
                             @foreach($category?->articles as $index => $article)
                                 <a href="/article/{{$article->id}}" class="swiper-slide" style="text-decoration: none">

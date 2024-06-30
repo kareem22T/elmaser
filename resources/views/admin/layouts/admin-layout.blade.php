@@ -101,7 +101,7 @@
   </div>
   <!--  Header End -->
   @if(Auth::guard("admin")->user()->role !== "Writer")
-  <header>
+  <header  style="flex-wrap: wrap">
     <div class="logo">
       <a href="{{ route('admin.dashboard') }}" >
         <img src="{{ asset('/dashboard/images/logo.png') }}" alt="">

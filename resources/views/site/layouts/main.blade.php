@@ -186,7 +186,7 @@
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="{{ asset('assets/js/main_listeners.js')}}?v={{time()}}"></script>
     <script src="{{ asset('assets/libs/js/swiper.js')}}"></script>
-    <script src="{{ asset('assets/js/sliders_setup.js')}}"></script>
+    <script src="{{ asset('assets/js/sliders_setup.js')}}?v={{time()}}"></script>
     @yield('scripts')
 </body>
 </html>

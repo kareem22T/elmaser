@@ -91,6 +91,11 @@
     .show {
       display: block !important;
     }
+    @media (max-width: 757.98px) {
+        header {
+            flex-wrap: wrap;
+        }
+    }
   </style>
 </head>
 
@@ -101,7 +106,7 @@
   </div>
   <!--  Header End -->
   @if(Auth::guard("admin")->user()->role !== "Writer")
-  <header  style="flex-wrap: wrap">
+  <header>
     <div class="logo">
       <a href="{{ route('admin.dashboard') }}" >
         <img src="{{ asset('/dashboard/images/logo.png') }}" alt="">

@@ -100,6 +100,9 @@
       width: 100%;
       border-radius: 10px
     }
+    h2, h3, h4, h5, h6 {
+        color: #e06045
+    }
 </style>
 <section class="main">
     @php

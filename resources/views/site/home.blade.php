@@ -40,6 +40,7 @@
                         @php
                             $main_article = App\Models\Article::find($item->article_id);
                         @endphp
+                        @if ($main_article)
                         <div class="swiper-slide">
                             <a href="/article/{{$main_article->id}}">
                                 <img src="{{$main_article->thumbnail_path}}" alt="">
@@ -57,6 +58,7 @@
                                 </a>
                             </div>
                         </div>
+                        @endif
                         @endforeach
 
                     </div>

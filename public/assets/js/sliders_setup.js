@@ -1,15 +1,17 @@
-
 var swiper = new Swiper(".mainSlider", {
-spaceBetween: 15,
+    spaceBetween: 15,
+    autoplay: {
+      delay: 5000, // autoplay every 5 seconds
+      disableOnInteraction: false, // keep autoplaying even after user interaction
+    },
     pagination: {
-    el: ".swiper-pagination",
-    clickable: true,
-    renderBullet: function (index, className) {
+      el: ".swiper-pagination",
+      clickable: true,
+      renderBullet: function (index, className) {
         return '<span class="' + className + '">' + (index + 1) + "</span>";
-    },
-    },
-});
-var swiper = new Swiper(".trendSlider", {
+      },
+},
+  });var swiper = new Swiper(".trendSlider", {
     spaceBetween: 5,
     slidesPerView: 1,
     breakpoints: {

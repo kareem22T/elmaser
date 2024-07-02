@@ -181,7 +181,7 @@
                     </ul>
                 </div>
                 <div class="w-50 mb-5" style="margin-left: auto;margin-right: auto">
-                    <div @click="this.showImages = true; this.current_article_id = null" class="w-100 h-100 p-3 d-flex justify-content-center align-items-center form-control input" style="height: 170px; max-height: 300px">
+                    <div @click="this.showImages = true; this.current_article_id = null" class="w-100 h-100 p-3 d-flex justify-content-center align-items-center form-control input" style="height: 170px; max-height: 300px;overflow: hidden">
                         <img :src="preview_img ? preview_img  : '/dashboard/images/add_image.svg'" id="preview" alt="img logo" style="width: 100%;object-fit: contain; height: 100%;">
                     </div>
                 </div>

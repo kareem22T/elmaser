@@ -205,7 +205,7 @@
                             <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" />
                             <path d="M12 7v5" />
                         </svg>
-                        {{ Carbon\Carbon::parse($article->created_at)->format('h:i A') }}
+                        {{ str_replace(['AM', 'PM'], ['ص', 'م'],Carbon\Carbon::parse($article->created_at)->format('h:i A')) }}
                     </p>
                 </div>
             </div>

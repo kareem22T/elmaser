@@ -150,7 +150,7 @@
                                     <p>{{ $article->title }}</p>
                                 </a>
                                 <span class="date"><i class="fa-regular fa-calendar-days"></i>
-                                    {{ $days[Carbon\Carbon::parse($article->created_at)->dayOfWeek] . ', ' . Carbon\Carbon::parse($article->created_at)->day . ' ' . $months[Carbon\Carbon::parse($article->created_at)->month - 1] . ', ' . Carbon\Carbon::parse($article->created_at)->year . ' ' . Carbon\Carbon::parse($article->created_at)->format('h:i A') }}
+                                    {{ $days[Carbon\Carbon::parse($article->created_at)->dayOfWeek] . ', ' . Carbon\Carbon::parse($article->created_at)->day . ' ' . $months[Carbon\Carbon::parse($article->created_at)->month - 1] . ', ' . Carbon\Carbon::parse($article->created_at)->year . ' ' . str_replace(['AM', 'PM'], ['ص', 'م'],Carbon\Carbon::parse($article->created_at)->format('h:i A')) }}
                                 </span>
                             </div>
                         </div>
@@ -174,7 +174,7 @@
                                 </div>
                                 <div class="text">
                                     <p>{{ $item->title }}</p>
-                                    <span class="date">{{ $days[Carbon\Carbon::parse($item->created_at)->dayOfWeek] . ', ' . Carbon\Carbon::parse($item->created_at)->day . ' ' . $months[Carbon\Carbon::parse($item->created_at)->month - 1] . ', ' . Carbon\Carbon::parse($item->created_at)->year . ' ' . Carbon\Carbon::parse($item->created_at)->format('h:i A') }}</span>
+                                    <span class="date">{{ $days[Carbon\Carbon::parse($item->created_at)->dayOfWeek] . ', ' . Carbon\Carbon::parse($item->created_at)->day . ' ' . $months[Carbon\Carbon::parse($item->created_at)->month - 1] . ', ' . Carbon\Carbon::parse($item->created_at)->year . ' ' . str_replace(['AM', 'PM'], ['ص', 'م'],Carbon\Carbon::parse($item->created_at)->format('h:i A')) }}</span>
                                 </div>
                             </a>
                             @endforeach
@@ -233,7 +233,7 @@
                             <div class="text">
                                 <a href="category/{{ $visit->article->category?->id }}"> {{ $visit->article->category?->main_name }} <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
                                 <a href="/article/{{ $visit->article->id }}">{{ $visit->article->title }}</a>
-                                <span class="date">{{ $days[Carbon\Carbon::parse($visit->article->created_at)->dayOfWeek] . ', ' . Carbon\Carbon::parse($visit->article->created_at)->day . ' ' . $months[Carbon\Carbon::parse($visit->article->created_at)->month - 1] . ', ' . Carbon\Carbon::parse($visit->article->created_at)->year . ' ' . Carbon\Carbon::parse($visit->article->created_at)->format('h:i A') }}</span>
+                                <span class="date">{{ $days[Carbon\Carbon::parse($visit->article->created_at)->dayOfWeek] . ', ' . Carbon\Carbon::parse($visit->article->created_at)->day . ' ' . $months[Carbon\Carbon::parse($visit->article->created_at)->month - 1] . ', ' . Carbon\Carbon::parse($visit->article->created_at)->year . ' ' . str_replace(['AM', 'PM'], ['ص', 'م'],Carbon\Carbon::parse($visit->article->created_at)->format('h:i A')) }}</span>
                             </div>
                         </div>
                         @endif
@@ -257,7 +257,7 @@
                                     </div>
                                     <div class="text">
                                         <p>{{ $article->title }}</p>
-                                        <span class="date">{{ $days[Carbon\Carbon::parse($article->created_at)->dayOfWeek] . ', ' . Carbon\Carbon::parse($article->created_at)->day . ' ' . $months[Carbon\Carbon::parse($article->created_at)->month - 1] . ', ' . Carbon\Carbon::parse($article->created_at)->year . ' ' . Carbon\Carbon::parse($article->created_at)->format('h:i A') }}</span>
+                                        <span class="date">{{ $days[Carbon\Carbon::parse($article->created_at)->dayOfWeek] . ', ' . Carbon\Carbon::parse($article->created_at)->day . ' ' . $months[Carbon\Carbon::parse($article->created_at)->month - 1] . ', ' . Carbon\Carbon::parse($article->created_at)->year . ' ' . str_replace(['AM', 'PM'], ['ص', 'م'],Carbon\Carbon::parse($article->created_at)->format('h:i A')) }}</span>
                                     </div>
                                 </a>
                             @endforeach

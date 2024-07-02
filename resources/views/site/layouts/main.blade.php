@@ -20,6 +20,10 @@
     <link rel="stylesheet" href="{{ asset('assets/css/main.css')}}?v={{time()}}">
     <link rel="shortcut icon" href="{{asset("/site/imgs/logo_t.png")}}?v={{time()}}" type="image/x-icon">
     <style>
+        .date {
+            font-size: 13px;
+            margin-top: 8px
+        }
     .loader {
         width: 100vw;
         height: 100vh;

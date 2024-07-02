@@ -277,7 +277,7 @@ created() {
         this.getTerm(this.term_id, this.current_lang)
         if (this.current_lang == 'AR') {
             document.body.classList = 'ar'
-        } 
+        }
     })
     this.getUser()
     this.getLanguages()

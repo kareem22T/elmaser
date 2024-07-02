@@ -1166,9 +1166,17 @@ section > div > .container .trend .swiper-slide .text h4.head-eg {
   border-right: 5px solid red;
 }
 section > div > .container .trend .swiper-slide .text p {
-  font-size: 17px;
-  font-weight: 700;
-  line-height: 25px;
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 25px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-height: 3em;
+    line-height: 1.5em;
+    margin-bottom: 8px;
 }
 section > div > .container .trend .swiper-slide .text .date {
   font-size: 16px;

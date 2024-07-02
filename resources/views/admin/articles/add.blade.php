@@ -98,17 +98,15 @@
                         </button>
                     </div>
                 </div>
-                <div class="pagination w-100 d-flex gap-2 justify-content-center mt-3" v-if="last_page > 1">
-                    <button class="btn btn-primary" :disabled="page === 1" @click="goToFirstPage">First</button>
-                    <button class="btn btn-primary" :disabled="page === 1" @click="goToPreviousPage">Previous</button>
+                <div class="pagination w-100 d-flex gap-2 justify-content-center mt-3" v-if="last_page > 1" style="flex-wrap: wrap; max-width: 100%">
+                    <button class="btn btn-primary" :disabled="page === 1" @click="goToFirstPage">الاولي</button>
 
                     <div v-for="page_num in visiblePages" :key="page_num">
                       <label :for="`page_num_${page_num}`" class="btn btn-primary" :class="page_num === page ? 'active' : ''">@{{ page_num }}</label>
                       <input type="radio" class="d-none" name="page_num" :id="`page_num_${page_num}`" v-model="page" :value="page_num" @change="pageChanged">
                     </div>
 
-                    <button class="btn btn-primary" :disabled="page === last_page" @click="goToNextPage">Next</button>
-                    <button class="btn btn-primary" :disabled="page === last_page" @click="goToLastPage">Last</button>
+                    <button class="btn btn-primary" :disabled="page === last_page" @click="goToLastPage">الاخيرة</button>
                 </div>
                 <h1 v-if="images && !images.length && !search">لا توجد صور</h1>
                 <div class="hide-content" v-if="showSettingsPopUp"></div>
@@ -327,6 +325,26 @@ createApp({
       } else {
         this.getSearchImages(this.search);
       }
+    },
+    goToFirstPage() {
+      this.page = 1;
+      this.pageChanged();
+    },
+    goToPreviousPage() {
+      if (this.page > 1) {
+        this.page -= 1;
+        this.pageChanged();
+      }
+    },
+    goToNextPage() {
+      if (this.page < this.last_page) {
+        this.page += 1;
+        this.pageChanged();
+      }
+    },
+    goToLastPage() {
+      this.page = this.last_page;
+      this.pageChanged();
     },
     async add(title, content, thumbnail, cat_id, author_name, tags, draft = null) {
       $('.loader').fadeIn().css('display', 'flex')

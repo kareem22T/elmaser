@@ -46,7 +46,7 @@ class CategoriesController extends Controller
                                 ->orWhere('description', 'like', '%' . $request->search_words . '%')
                                 ->paginate(10);
 
-        return $this->jsonData(true, true, '', [], !$languages->isEmpty() ? $languages : $categories);
+        return $this->jsonData(true, true, '', [], !$languages->isEmpty() ? $languages : $languages);
 
     }
 

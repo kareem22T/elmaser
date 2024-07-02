@@ -8,6 +8,46 @@
 <h1 class="mb-5 page-title text-center">
     المقالات
 </h1>
+@php
+    $today = Carbon\Carbon::today();
+    $yesterday = Carbon\Carbon::yesterday();
+    $all = App\Models\Article::all()->count();
+    $todayArticles = App\Models\Article::whereDate('created_at', $today)->get()->count();
+    $yesterdayArticles = App\Models\Article::whereDate('created_at', $yesterday)->get()->count();
+@endphp
+<div class="d-flex" style="gap: 8px">
+    <div class="col-lg-4 mb-4">
+        <div class="card">
+            <div class="card-body">
+                <div class="d-flex justify-content-between">
+                    <h1 class="card-text">كل المقالات</h1>
+                    <h1>{{ $all }}</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-4 mb-4">
+        <div class="card">
+            <div class="card-body">
+                <div class="d-flex justify-content-between">
+                    <h1 class="card-text">المضافة اليوم</h1>
+                    <h1>{{ $todayArticles }}</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-4 mb-4">
+        <div class="card">
+            <div class="card-body">
+                <div class="d-flex justify-content-between">
+                    <h1 class="card-text"> المضافة امس</h1>
+                    <h1>{{ $yesterdayArticles }}</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 <div class="card w-100" id="word_prev">
     <div class="card-header d-flex justify-content-between gap-3">
         <input type="text" name="search" id="search" class="form-control w-25" placeholder="بحث ..." v-model="search" @input="getSearch(this.search)" style="font-size: 19px !important;padding: 10px 20px !important;border-radius: 15px !important;">

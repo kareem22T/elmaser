@@ -42,11 +42,11 @@ class CategoriesController extends Controller
     }
 
     public function search(Request $request) {
-        $languages = Category::with('sub_categories')->where('main_name', 'like', '%' . $request->search_words . '%')
+        $languages = Category::where('main_name', 'like', '%' . $request->search_words . '%')
                                 ->orWhere('description', 'like', '%' . $request->search_words . '%')
                                 ->paginate(10);
 
-        $categories = Category::with('sub_categories')->whereHas('names', function ($query) use ($request) {
+        $categories = Category::whereHas('names', function ($query) use ($request) {
             $query->where('name', 'like', '%'.$request->search_words.'%');
         })->paginate(10);
 

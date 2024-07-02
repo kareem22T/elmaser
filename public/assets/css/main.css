@@ -956,6 +956,7 @@ section > div > .container .main_articles .mainSlider .swiper-slide .text p {
 section > div > .container .main_articles .mainSlider .swiper-slide .text p span {
   width: 85%;
   display: block;
+  padding-bottom: 16px;
 }
 section > div > .container .main_articles .mainSlider .swiper-slide img {
   position: absolute;
@@ -1304,6 +1305,14 @@ section .borsa-2 .swiper-slide .text p {
   line-height: 25px;
   text-align: center;
   color: #4f4f4f;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-height: 3em;
+  line-height: 1.5em;
+  margin-bottom: 8px;
 }
 section .borsa-2 .swiper-slide .text .date {
   font-size: 16px;

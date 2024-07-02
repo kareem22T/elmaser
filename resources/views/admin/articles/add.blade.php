@@ -57,7 +57,7 @@
                         <label for="lang_name" class="form-label">محتوى الخبر*</label>
                         <div class="card input">
                             <div class="pt-3">
-                                <div class="toolbar d-flex gap-2 justify-content-center " style="flex-wrap: wrap">
+                                <div class="toolbar d-flex gap-2 justify-content-center" style="flex-wrap: wrap">
                                     <button @click="execCommand('bold')" class="btn btn-light"><b>B</b></button>
                                     <button @click="execCommand('italic')" class="btn btn-light"><i>I</i></button>
                                     <button @click="execCommand('underline')" class="btn btn-light"><u>U</u></button>
@@ -73,8 +73,10 @@
                                     <button @click="insertHTML('<h6>عنوان</h6>', 'article-content')" class="btn btn-light"><i class="ti ti-h-6"></i></button>
                                     <button @click="insertHTML('<p>نص</p>', 'article-content')" class="btn btn-light">P</button>
                                     <button class="btn btn-light" @click="this.showImages = true; this.current_article_id = 'article-content'"><i class="ti ti-photo-plus"></i></button>
-
                                     <button class="btn btn-light" @click="this.showCodePopUp = true"><i class="ti ti-code"></i></button>
+
+                                    <!-- Add color input -->
+                                    <input type="color" @input="changeColor($event)" style="--bs-btn-color: #000;background: #F6F9FC !important;--bs-btn-border-color: #F6F9FC;--bs-btn-hover-color: #000;--bs-btn-hover-bg: #d1d4d6;--bs-btn-hover-border-color: #c5c7ca;--bs-btn-focus-shadow-rgb: 209,212,214;--bs-btn-active-color: #000;--bs-btn-active-bg: #c5c7ca;--bs-btn-active-border-color: #b9bbbd;--bs-btn-active-shadow: inset 0 3px 5px rgba(0,0,0,0.125);--bs-btn-disabled-color: #000;--bs-btn-disabled-bg: #F6F9FC;--bs-btn-disabled-border-color: #F6F9FC;border: none !important;height: 50px;border-radius: 8px !important;" class="btn btn-light" />
                                 </div>
                             </div>
                             <div class="card-body">
@@ -684,13 +686,17 @@ createApp({
         })
     },
     execCommand(command) {
-        document.execCommand(command, false, null);
-    },
-    insertHTML(html, element, key) {
-        document.getElementById(element).focus();
-        document.execCommand('insertHTML', false, html);
-    },
-    setValuesToNull () {
+            document.execCommand(command, false, null);
+        },
+        insertHTML(html, element, key) {
+            document.getElementById(element).focus();
+            document.execCommand('insertHTML', false, html);
+        },
+        changeColor(event) {
+            const color = event.target.value;
+            document.execCommand('foreColor', false, color);
+        },
+        setValuesToNull () {
         this.chooseImage = null
         this.current_article_id = null
         this.showImages = null

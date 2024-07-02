@@ -46,10 +46,6 @@ class CategoriesController extends Controller
                                 ->orWhere('description', 'like', '%' . $request->search_words . '%')
                                 ->paginate(10);
 
-        $categories = Category::whereHas('names', function ($query) use ($request) {
-            $query->where('name', 'like', '%'.$request->search_words.'%');
-        })->paginate(10);
-
         return $this->jsonData(true, true, '', [], !$languages->isEmpty() ? $languages : $categories);
 
     }

@@ -936,7 +936,7 @@ section > div > .container .main_articles .mainSlider .swiper-slide .text p {
     line-height: 42px;
     margin: 0;
     font-size: 1.5rem;
-    padding-bottom: 24px;
+    padding-bottom: 32px;
 }
 @media (max-width: 1199.98px) {
   section > div > .container .main_articles .mainSlider .swiper-slide .text p {

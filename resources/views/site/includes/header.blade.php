@@ -37,7 +37,6 @@
                     </a>
                 </div>
                 <div class="social">
-                    <div class="more"><i class="fa-solid fa-link"></i></div>
                     <div class="links">
                         @if(isset($settingsArray["facebook"]) && $settingsArray["facebook"]["value"])
                             <a href="{{$settingsArray["facebook"]["value"]}}" target="_blanck"><img src="{{ asset('assets/imgs/facebook.png') }}"></a>
@@ -50,6 +49,12 @@
                         @endif
                         @if(isset($settingsArray["x"]) && $settingsArray["x"]["value"])
                             <a href="{{$settingsArray["x"]["value"]}}" target="_blanck"><img src="{{ asset('assets/imgs/x.png') }}"></a>
+                        @endif
+                        @if(isset($settingsArray["tiktok"]) && $settingsArray["tiktok"]["value"])
+                            <a href="{{$settingsArray["tiktok"]["value"]}}" target="_blanck"><img src="{{ asset('assets/imgs/tiktok.png') }}"></a>
+                        @endif
+                        @if(isset($settingsArray["snapchat"]) && $settingsArray["snapchat"]["value"])
+                            <a href="{{$settingsArray["snapchat"]["value"]}}" target="_blanck"><img src="{{ asset('assets/imgs/snapchat.png') }}"></a>
                         @endif
                     </div>
                 </div>
@@ -93,6 +98,28 @@
                     @endforeach
                 </div>
                 <div class="mobil_links" style="overflow: auto">
+                    <div class="social" style="margin: 12px;padding: 8px; background: #fff;border-radius: 8px">
+                        <div class="links" style="position: relative !important; display: flex; gap: 8px">
+                            @if(isset($settingsArray["facebook"]) && $settingsArray["facebook"]["value"])
+                                <a href="{{$settingsArray["facebook"]["value"]}}" style="padding: 0 !important;width: max-content !important;" target="_blanck"><img src="{{ asset('assets/imgs/facebook.png') }}" style="width: 30px;border-radius: 4px"></a>
+                            @endif
+                            @if(isset($settingsArray["youtube"]) && $settingsArray["youtube"]["value"])
+                                <a href="{{$settingsArray["youtube"]["value"]}}" style="padding: 0 !important;width: max-content !important;" target="_blanck"><img src="{{ asset('assets/imgs/youtube.png') }}"  style="width: 30px;border-radius: 4px"></a>
+                            @endif
+                            @if(isset($settingsArray["instagram"]) && $settingsArray["instagram"]["value"])
+                                <a href="{{$settingsArray["instagram"]["value"]}}" style="padding: 0 !important;width: max-content !important;" target="_blanck"><img src="{{ asset('assets/imgs/instagram.png') }}"  style="width: 30px;border-radius: 4px"></a>
+                            @endif
+                            @if(isset($settingsArray["x"]) && $settingsArray["x"]["value"])
+                                <a href="{{$settingsArray["x"]["value"]}}" style="padding: 0 !important;width: max-content !important;" target="_blanck"><img src="{{ asset('assets/imgs/x.png') }}"  style="width: 30px;border-radius: 4px"></a>
+                            @endif
+                            @if(isset($settingsArray["tiktok"]) && $settingsArray["tiktok"]["value"])
+                                <a href="{{$settingsArray["tiktok"]["value"]}}" style="padding: 0 !important;width: max-content !important;" target="_blanck"><img src="{{ asset('assets/imgs/tiktok.png') }}"  style="width: 30px;border-radius: 4px"></a>
+                            @endif
+                            @if(isset($settingsArray["snapchat"]) && $settingsArray["snapchat"]["value"])
+                                <a href="{{$settingsArray["snapchat"]["value"]}}" style="padding: 0 !important;width: max-content !important;" target="_blanck"><img src="{{ asset('assets/imgs/snapchat.png') }}"  style="width: 30px;border-radius: 4px"></a>
+                            @endif
+                        </div>
+                    </div>
                     <a href="/" class="active">الرئيسية</a>
                     @foreach ($categories as $item)
                         <a href="/category/{{$item->id}}">{{$item->main_name}}</a>

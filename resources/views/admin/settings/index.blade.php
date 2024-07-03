@@ -292,13 +292,16 @@
                 </div>
                 <div class="w-100">
                     <div>
+                        <label for="snapchat" class="form-label">رابط سناب شات  </label>
+                        <input type="text" class="form-control" id="snapchat" v-model="snapchat">
+                    </div>
+                </div>
+                <div class="w-100">
+                    <div>
                         <label for="youtube" class="form-label">رابط يوتيوب </label>
                         <input type="text" class="form-control" id="youtube" v-model="youtube">
                     </div>
                 </div>
-            </div>
-
-            <div class="w-100 mb-4 gap-2" style="display: grid; grid-template-columns: 1fr 1fr;">
                 <div class="w-100">
                     <div>
                         <label for="x" class="form-label">رابط اكس </label>
@@ -306,6 +309,7 @@
                     </div>
                 </div>
             </div>
+
         </div>
     </div>
 
@@ -446,6 +450,7 @@ createApp({
         facebook: '{{(isset($settingsArray["facebook"]) && $settingsArray["facebook"]["value"]) ? $settingsArray["facebook"]["value"] : ''}}',
         instagram: '{{(isset($settingsArray["instagram"]) && $settingsArray["instagram"]["value"]) ? $settingsArray["instagram"]["value"] : ''}}',
         tiktok: '{{(isset($settingsArray["tiktok"]) && $settingsArray["tiktok"]["value"]) ? $settingsArray["tiktok"]["value"] : ''}}',
+        snapchat: '{{(isset($settingsArray["snapchat"]) && $settingsArray["snapchat"]["value"]) ? $settingsArray["snapchat"]["value"] : ''}}',
         youtube: '{{(isset($settingsArray["youtube"]) && $settingsArray["youtube"]["value"]) ? $settingsArray["youtube"]["value"] : ''}}',
         x: '{{(isset($settingsArray["x"]) && $settingsArray["x"]["value"]) ? $settingsArray["x"]["value"] : ''}}',
         header_ad: '{{(isset($settingsArray["header_ad"]) && $settingsArray["header_ad"]["value"]) ? $settingsArray["header_ad"]["value"] : ''}}',
@@ -515,6 +520,7 @@ createApp({
                 facebook: this.facebook,
                 instagram: this.instagram,
                 tiktok: this.tiktok,
+                snapchat: this.snapchat,
                 youtube: this.youtube,
                 x: this.x,
                 header_ad: this.header_ad,

@@ -8,10 +8,10 @@
 <meta property="og:type" content="{{ $article->category?->name }}">
 <meta property="og:title" content="{{ $article->title }}">
 <meta property="og:description" content="{{ $article->intro }}">
-<meta property="og:image" content="{{ "https://elgomhuriaeljadida.com" . $article->thumbnail_path }}?v={{time()}}">
-<meta property="og:url" content="https://elgomhuriaeljadida.com/article/{{$article->id}}">
+<meta property="og:image" content="{{ "https://elmaseer.com/" . $article->thumbnail_path }}?v={{time()}}">
+<meta property="og:url" content="https://elmaseer.com//article/{{$article->id}}">
 <meta property="og:type" content="article">
-<meta property="og:site_name" content="El gomhuria el Gdida">
+<meta property="og:site_name" content="El Maseer">
 <meta property="og:locale" content="ar_Ar">
 @endsection
 

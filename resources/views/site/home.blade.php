@@ -29,7 +29,7 @@
                 </div>
             @endif
             @php
-                $main_articles = App\Models\Home_article::all();
+                $main_articles = App\Models\Home_article::orderBy("id", "desc")->get();
                 $trend = App\Models\Article::latest()->where("isTrend", true)->take(15)->get();
             @endphp
             <div class="main_articles">

@@ -18,6 +18,8 @@ use App\Models\Article_Title;
 use App\Models\Important_article;
 use App\Models\Article_Content;
 use App\Models\Articles_image;
+use App\Models\Home_article;
+use Carbon\Carbon;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
@@ -225,6 +227,7 @@ class ArticleController extends Controller
             'intro' => $request->intro,
             'isDraft' => $request->draft ? true : false,
             'author_id' => $request->author_id,
+            'created_at' => Carbon::now('GMT+3')
         ]);
 
         if ($request->tags)
@@ -232,6 +235,23 @@ class ArticleController extends Controller
                 $tag = Tag::firstOrCreate(['name' => $tagName]); // Check if tag exists or create a new one
                 $createArticle->tags()->attach($tag->id); // Attach the tag to the Article
             }
+
+            if ($request->isMain) {
+                $totalArticles = Home_article::count();
+                if ($totalArticles > 4) {
+                    $oldestArticles = Home_article::orderBy('id', 'asc')
+                    ->take($totalArticles - 4)
+                    ->get();
+
+                    foreach ($oldestArticles as $article) {
+                        $article->delete();
+                    }
+                }
+                $saveArticle = Home_article::create([
+                    'title' => $createArticle->title,
+                    'article_id' => $createArticle->id
+                ]);
+        }
 
         if ($createArticle){
             if ($request->draft)

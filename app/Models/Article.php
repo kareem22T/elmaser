@@ -24,6 +24,7 @@ class Article extends Model
         'thumbnail_title',
         'isDraft',
         'isTrend',
+        'created_at',
         'category_id'
     ];
 

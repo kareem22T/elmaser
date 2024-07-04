@@ -205,6 +205,11 @@
                 </div>
             </div>
 
+            <div style="display: flex;gap: 16px;justify-content: center;margin-bottom: 24px;">
+                <label for="isMain">اضافة الخبر للرئيسية</label>
+                <input type="checkbox" name="isMain" id="isMain" v-model="isMain">
+            </div>
+
             <div class="mb-5 w-100 d-flex gap-3 justify-content-center">
                 @if(Auth::guard('admin')->user()->role !== "Writer")
                     <button type="submit" class="btn btn-primary w-25 form-control button input" style="height: fit-content" @click="getContent().then(() => { add(title, content, preview_img, cat_id, author_name, tags)})"><i class="ti ti-plus"></i> نشر الخبر</button>
@@ -272,6 +277,7 @@ createApp({
       current_article_id: null,
       search_tags: null,
       preview_img: null,
+      isMain: 'off',
       search: null,
       choosed_img_title: "",
       showSliderPopUp: false,
@@ -361,6 +367,7 @@ createApp({
                 draft: draft ? draft : null,
                 intro: this.intro,
                 sub_title: this.sub_title,
+                isMain: this.isMain,
             },
             {
                 headers: {

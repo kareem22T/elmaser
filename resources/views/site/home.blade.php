@@ -222,7 +222,7 @@
         @if($more_visited && $more_visited->count() > 3)
             <div class="most-read">
                 <div class="container">
-                    <h1 class="head-dark head"><i class="fa-solid fa-arrow-trend-up"></i> الاخبار الاكثر قرائة <span class="line"></span></h1>
+                    <h1 class="head-dark head"><i class="fa-solid fa-arrow-trend-up"></i> الاخبار الاكثر قراءة <span class="line"></span></h1>
                     <div class="news">
                         @foreach ($more_visited as $visit)
                         @if($visit->article)

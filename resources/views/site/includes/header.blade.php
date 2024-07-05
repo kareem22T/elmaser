@@ -133,7 +133,7 @@
         </div>
     </nav>
 @php
-    $important_articles = App\Models\Important_article::all();
+    $important_articles = App\Models\Important_article::orderBy("id", "desc")->get();
 @endphp
     <div class="news_slider">
         {{-- <div class="container"> --}}

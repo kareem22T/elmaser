@@ -253,6 +253,18 @@ class ArticleController extends Controller
                 ]);
         }
 
+        if ($request->isInNewsBar){
+            $isArticleExist = Important_article::where('article_id', $createArticle->id)->get()->count() > 0;
+            if (!$isArticleExist) {
+                $important_articles = Important_article::all();
+
+                if ($important_articles->count() === 10)
+                    $remove_first = Important_article::first()->delete();
+
+                $add_article = Important_article::create(['article_id' => $createArticle->id]);
+            }
+        }
+
         if ($createArticle){
             if ($request->draft)
                 return $this->jsonData(true, true, ' تم اضافة الخبر الي المسودة', [], []);

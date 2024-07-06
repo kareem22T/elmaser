@@ -657,6 +657,8 @@ header .head .container .head_advertisment {
   gap: 8px;
   align-items: center;
   font-size: 13px;
+  white-space: nowrap;
+  flex-wrap: wrap;
 }
 
 .category_desc {

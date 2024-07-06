@@ -651,14 +651,15 @@ header .head .container .head_advertisment {
   gap: 16px;
   align-items: center;
   margin-top: 16px;
+  white-space: nowrap;
+  flex-wrap: wrap;
+
 }
 .article-head .details p {
   display: flex;
   gap: 8px;
   align-items: center;
   font-size: 13px;
-  white-space: nowrap;
-  flex-wrap: wrap;
 }
 
 .category_desc {

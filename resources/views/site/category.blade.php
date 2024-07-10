@@ -72,7 +72,7 @@
             <div class="side" style="margin-top: 16px">
                 @if($more_visited && $more_visited->count() > 3)
                     <div class="head" style="background: #0168b3; color: #fff; font-size: 26px;font-weight: 700;padding: 8px">
-                        الاكثر قرائة
+                         الاكثر قراءة
                     </div>
                     <div class="side_articles">
                         @foreach ($more_visited as $visit)

@@ -109,8 +109,9 @@
         $more_visited = App\Models\Visit::with(['article' => function ($query) {
             $query->where('isDraft', false);
         }])
-        ->orderBy('total_visits', 'desc')
-        ->take(4)
+        ->where('created_at', '>=', Carbon\Carbon::now()->subDays(2)) // Filter visits from the last two days
+        ->orderBy('total_visits', 'desc') // Order by the total visits
+        ->take(5)
         ->get();
         $latest = App\Models\Article::latest()->where('isDraft', false)
         ->take(4)

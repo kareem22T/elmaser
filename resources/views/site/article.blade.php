@@ -108,7 +108,7 @@
     @php
 $more_visited = App\Models\Visit::whereHas('article', function ($query) {
     $query->where('isDraft', false)
-          ->whereDate('created_at', '>=', Carbor\Carbon::now()->subDays(1)->toDateString()); // Filter articles from the last day
+          ->whereDate('created_at', '>=', Carbon\Carbon::now()->subDays(1)->toDateString()); // Filter articles from the last day
 })
 ->with(['article' => function ($query) {
     $query->where('isDraft', false);

@@ -124,9 +124,13 @@
             $days = array(
             "الأحد", "الإثنين", "الثلاثاء", "الأربعاء", "الخميس", "الجمعة", "السبت"
             );
-            $more_visited = App\Models\Visit::with(['article' => function ($query) {
-                $query->where('isDraft', false);
-            }])
+            $more_visited = App\Models\Visit::whereHas('article', function ($query) {
+            $query->where('isDraft', false)
+                ->whereDate('created_at', '>=', Carbon\Carbon::now()->subDays(1)->toDateString()); // Filter articles from the last day
+        })
+        ->with(['article' => function ($query) {
+            $query->where('isDraft', false);
+        }])
             ->orderBy('total_visits', 'desc')
             ->take(6)
             ->get();

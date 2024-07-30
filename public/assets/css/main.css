@@ -1627,6 +1627,9 @@ footer .container p {
   border-bottom: 1px solid #dcdcdc;
   height: 100%;
   width: 100%;
+  max-height: 69px;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 
 /*# sourceMappingURL=main.css.map */

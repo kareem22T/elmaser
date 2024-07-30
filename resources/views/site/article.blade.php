@@ -109,10 +109,11 @@
         $more_visited = App\Models\Visit::with(['article' => function ($query) {
             $query->where('isDraft', false);
         }])
-        ->whereDate('created_at', '>=', date('d.m.Y',strtotime("-1 days"))) // Filter visits from the last two days
+        ->whereDate('created_at', '>=', Carbon::now()->subDays(1)->toDateString()) // Filter visits from the last day
         ->orderBy('total_visits', 'desc') // Order by the total visits
-        ->take(5)
+        ->take(5) // Limit the results to the 5 most visited in the last day
         ->get();
+
         $latest = App\Models\Article::latest()->where('isDraft', false)
         ->take(4)
         ->get();

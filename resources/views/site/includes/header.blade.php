@@ -135,6 +135,7 @@
 @php
     $important_articles = App\Models\Important_article::orderBy("id", "desc")->get();
 @endphp
+
     <div class="news_slider">
         {{-- <div class="container"> --}}
             <div class="bar" style="width: 100vw;padding: 4px 0">
@@ -201,4 +202,15 @@
 
           </div>
     {{-- </div> --}}
+    <form method="GET" action="/search" class="search" style="position: fixed;top: 0;left: 0;width: 100%;height: 100vh;background: #0000003b;z-index: 99999999999999;padding: 1rem;box-sizing: border-box;">
+        <!-- Added v-model binding and @input event handler for search functionality -->
+        <div class="hide-content-2" style="position: fixed;width: 100%;height: 100vh;top: 0;left: 0;background: #0003;z-index: 9999"></div>
+        <input type="text" name="s"style="width: 100%;z-index: 999999;position: relative;text-align: right;direction: rtl;padding: 10px;border-radius: 8px;" id="search" placeholder="بحث ..." v-model="search" @input="handleSearch">
+        <button type="submit" style="transform: none;top: 28px;left: 28px;z-index: 99999991;position: absolute;" >
+            بحث
+            <i class="fa fa-search"></i>
+        </button>
+        <!-- Added suggestion box for search results -->
+    </form>
 </header>
+

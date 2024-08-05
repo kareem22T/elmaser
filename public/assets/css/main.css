@@ -1632,6 +1632,24 @@ footer .container p {
   overflow: hidden;
 }
 
+.search {
+    display: none;
+}
+
+.search input:focus {
+    outline: none;
+    box-shadow: none;
+    border: 1px solid #df6044;
+}
+
+.search button {
+    background-color: #df6044;
+    color: #fff;
+    padding: 4px 16px;
+    border-radius: 4px;
+    border: none;
+}
+
 /*# sourceMappingURL=main.css.map */
 
 

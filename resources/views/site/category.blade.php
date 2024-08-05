@@ -120,7 +120,7 @@
             </div>
     </div>
 
-        <div class="pagination_wrapper" style="margin-bottom: 16px !important">
+        <div class="pagination_wrapper" style="margin-bottom: 16px !important;flex-wrap: wrap;">
             {!! $articles->links('pagination::bootstrap-4') !!}
         </div>
         @if(isset($settingsArray["horizon_third_ad"]) && $settingsArray["horizon_third_ad"]["value"])

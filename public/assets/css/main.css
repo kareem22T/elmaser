@@ -1666,3 +1666,7 @@ footer .container p {
         margin-right: -8px;
     }
 }
+
+.pagination_wrapper .pagination {
+    flex-wrap: wrap;
+}

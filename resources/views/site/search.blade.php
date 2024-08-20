@@ -10,12 +10,12 @@
         $months = array(
             "يناير", "فبراير", "مارس", "إبريل", "مايو", "يونيو",
             "يوليو", "أغسطس", "سبتمبر", "أكتوبر", "نوفمبر", "ديسمبر"
-            );
+        );
 
         $days = array(
         "الأحد", "الإثنين", "الثلاثاء", "الأربعاء", "الخميس", "الجمعة", "السبت"
         );
-                $more_visited = App\Models\Visit::with(['article' => function ($query) {
+            $more_visited = App\Models\Visit::with(['article' => function ($query) {
             $query->where('isDraft', false);
         }])
         ->orderBy('total_visits', 'desc')

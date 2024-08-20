@@ -128,7 +128,7 @@
             </div>
             <div class="left">
                 <a href="" class="more"><i class="fa-solid fa-grip"></i></a>
-                <a href=""><i class="fa-solid fa-magnifying-glass"></i></a>
+                <a href="" class="search_btn"><i class="fa-solid fa-magnifying-glass"></i></a>
             </div>
         </div>
     </nav>

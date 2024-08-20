@@ -192,7 +192,7 @@
     <script src="{{ asset('assets/libs/js/swiper.js')}}"></script>
     <script src="{{ asset('assets/js/sliders_setup.js')}}?v={{time()}}"></script>
     <script>
-        $(".left a:last-child").on("click", function(e) {
+        $(".left .search_btn").on("click", function(e) {
             e.preventDefault();
             $('.search').fadeIn()
         })

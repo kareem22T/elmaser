@@ -5,14 +5,23 @@
 @section('content')
 @if ($article)
 @section("heads")
-<meta property="og:type" content="{{ $article->category?->name }}">
-<meta property="og:title" content="{{ $article->title }}">
-<meta property="og:description" content="{{ $article->intro }}">
-<meta property="og:image" content="{{ "https://elmaseer.com" . $article->thumbnail_path }}?v={{time()}}">
-<meta property="og:url" content="https://elmaseer.com/article/{{$article->id}}">
-<meta property="og:type" content="article">
-<meta property="og:site_name" content="El Maseer">
-<meta property="og:locale" content="ar_Ar">
+    <meta property="og:type" content="{{ $article->category?->name }}">
+    <meta property="og:title" content="{{ $article->title }}">
+    <meta property="og:description" content="{{ $article->intro }}">
+    <meta property="og:image" content="{{ "https://elmaseer.com" . $article->thumbnail_path }}?v={{time()}}">
+    <meta property="og:url" content="https://elmaseer.com/article/{{$article->id}}">
+    <meta property="og:type" content="article"> <!-- Corrected duplicate meta og:type -->
+    <meta property="og:site_name" content="المصير">
+    <meta property="og:locale" content="ar_AR"> <!-- Corrected locale format -->
+    <meta property="og:image:width" content="700"> <!-- Added from the referenced site -->
+    <meta property="og:image:height" content="400"> <!-- Added from the referenced site -->
+    <meta property="og:image:type" content="image/jpeg"> <!-- Added from the referenced site -->
+    <meta name="twitter:title" content="{{ $article->title }}"> <!-- Added from the referenced site -->
+    <meta name="twitter:description" content="{{ $article->intro }}"> <!-- Added from the referenced site -->
+    <meta name="twitter:card" content="summary_large_image"> <!-- Added from the referenced site -->
+    <meta name="twitter:image" content="{{ "https://elmaseer.com" . $article->thumbnail_path }}?v={{time()}}"> <!-- Added from the referenced site -->
+    <meta name="twitter:site" content="@misrelaan1"> <!-- Added from the referenced site -->
+    <meta name="twitter:creator" content="@misrelaan1"> <!-- Added from the referenced site -->
 @endsection
 
 <link rel="stylesheet" href="{{ asset('/libs/css/swiperadmin.css') }}?v={{ time() }}" />

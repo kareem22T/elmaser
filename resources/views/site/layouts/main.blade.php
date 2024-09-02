@@ -19,6 +19,8 @@
     <!-- main style -->
     <link rel="stylesheet" href="{{ asset('assets/css/main.css')}}?v={{time()}}">
     <link rel="shortcut icon" href="{{asset("/site/imgs/logo_t.png")}}?v={{time()}}" type="image/x-icon">
+    <meta name="description" content="{{(isset($settingsArray['meta_description']) && $settingsArray['meta_description']["value"]) ? $settingsArray['meta_description']["value"] : '' !!}}">
+
     <style>
         .date {
             font-size: 13px;

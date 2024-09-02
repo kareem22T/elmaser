@@ -179,6 +179,12 @@
             </div>
 
         </div>
+        <div class="w-100">
+            <div>
+                <label for="phone" class="form-label">Meta description </label>
+                <input type="text" class="form-control" id="meta_description" v-model="meta_description">
+            </div>
+        </div>
     </div>
     <div class="mt-4" :class="(!showPrivacy ? 'd-none' : '')">
         <!-- Swiper -->
@@ -445,6 +451,7 @@ createApp({
         showCodePopUp: false,
         slider_imgs: [],
         code: '',
+        meta_description: '{{(isset($settingsArray["meta_description"]) && $settingsArray["meta_description"]["value"]) ? $settingsArray["meta_description"]["value"] : ''}}',
         phone: '{{(isset($settingsArray["phone"]) && $settingsArray["phone"]["value"]) ? $settingsArray["phone"]["value"] : ''}}',
         email: '{{(isset($settingsArray["email"]) && $settingsArray["email"]["value"]) ? $settingsArray["email"]["value"] : ''}}',
         facebook: '{{(isset($settingsArray["facebook"]) && $settingsArray["facebook"]["value"]) ? $settingsArray["facebook"]["value"] : ''}}',
@@ -522,6 +529,7 @@ createApp({
                 tiktok: this.tiktok,
                 snapchat: this.snapchat,
                 youtube: this.youtube,
+                meta_description: this.meta_description,
                 x: this.x,
                 header_ad: this.header_ad,
                 header_ad_url: this.header_ad_url,

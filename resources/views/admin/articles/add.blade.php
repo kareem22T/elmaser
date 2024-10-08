@@ -211,7 +211,7 @@
             </div>
 
             <div style="display: flex;gap: 16px;justify-content: center;margin-bottom: 24px;">
-                <label for="isMain">اضافة الخبر لشريط الاخبار</label>
+                <label for="isInNewsBar">اضافة الخبر لشريط الاخبار</label>
                 <input type="checkbox" name="isInNewsBar" id="isInNewsBar" v-model="isInNewsBar">
             </div>
 

@@ -23,6 +23,8 @@ use Carbon\Carbon;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
+use Spatie\Sitemap\Sitemap;
+use Spatie\Sitemap\Tags\Url;
 
 class ArticleController extends Controller
 {
@@ -274,6 +276,25 @@ class ArticleController extends Controller
 
     }
 
+    protected function generateSitemap()
+    {
+        $sitemap = Sitemap::create();
+
+        // Retrieve all articles to generate the sitemap
+        $articles = Article::all();
+
+        foreach ($articles as $article) {
+            $sitemap->add(
+                Url::create(route('article.show.web', $article->id))  // Use the article route
+                    ->setLastModificationDate($article->updated_at)
+                    ->setChangeFrequency(Url::CHANGE_FREQUENCY_DAILY)
+                    ->setPriority(0.8)
+            );
+        }
+
+        // Save the sitemap to the public folder
+        $sitemap->writeToFile(public_path('sitemap.xml'));
+    }
     public function editIndex ($cat_id) {
         $Article = Article::find($cat_id);
         return view('admin.articles.edit')->with(compact('Article'));

@@ -2,8 +2,10 @@
 
 namespace App\Providers;
 
+use App\Models\Article;
 use Illuminate\Support\ServiceProvider;
 use App\Models\Setting;
+use App\Observers\ArticleObserver;
 use Illuminate\Support\Facades\URL;
 
 class AppServiceProvider extends ServiceProvider
@@ -21,6 +23,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        Article::observe(ArticleObserver::class);
+
         if ($this->app->environment('production')) {
             URL::forceScheme('https');
         }

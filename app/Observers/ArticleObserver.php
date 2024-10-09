@@ -31,9 +31,9 @@ class ArticleObserver
 
         foreach ($articles as $article) {
             $sitemap->add(
-                Url::create(route('article.show', $article->id))  // Use the article route
-                    ->setLastModificationDate($article->updated_at)
-                    ->setChangeFrequency(Url::CHANGE_FREQUENCY_DAILY)
+                Url::create(route('article.show.web', $article->id))  // Use the article route
+                ->setLastModificationDate(now())
+                ->setChangeFrequency(Url::CHANGE_FREQUENCY_DAILY)
                     ->setPriority(0.8)
             );
         }

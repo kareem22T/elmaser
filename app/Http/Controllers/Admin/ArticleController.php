@@ -238,12 +238,12 @@ class ArticleController extends Controller
                 $createArticle->tags()->attach($tag->id); // Attach the tag to the Article
             }
 
-            if ($request->isMain) {
+            if ( $request->isMain == 'true') {
                 $totalArticles = Home_article::count();
                 if ($totalArticles > 4) {
                     $oldestArticles = Home_article::orderBy('id', 'asc')
-                    ->take($totalArticles - 4)
-                    ->get();
+                        ->take($totalArticles - 4)
+                        ->get();
 
                     foreach ($oldestArticles as $article) {
                         $article->delete();
@@ -253,21 +253,21 @@ class ArticleController extends Controller
                     'title' => $createArticle->title,
                     'article_id' => $createArticle->id
                 ]);
-        }
-
-        if ($request->isInNewsBar){
-            $isArticleExist = Important_article::where('article_id', $createArticle->id)->get()->count() > 0;
-            if (!$isArticleExist) {
-                $important_articles = Important_article::all();
-
-                if ($important_articles->count() === 10)
-                    $remove_first = Important_article::first()->delete();
-
-                $add_article = Important_article::create(['article_id' => $createArticle->id]);
             }
-        }
 
-        if ($createArticle){
+            if ($request->isInNewsBar == 'true') {
+                $isArticleExist = Important_article::where('article_id', $createArticle->id)->count() > 0;
+                if (!$isArticleExist) {
+                    $important_articles = Important_article::all();
+
+                    if ($important_articles->count() === 10)
+                        $remove_first = Important_article::first()->delete();
+
+                    $add_article = Important_article::create(['article_id' => $createArticle->id]);
+                }
+            }
+
+            if ($createArticle){
             if ($request->draft)
                 return $this->jsonData(true, true, ' تم اضافة الخبر الي المسودة', [], []);
             else
@@ -286,7 +286,7 @@ class ArticleController extends Controller
         foreach ($articles as $article) {
             $sitemap->add(
                 Url::create(route('article.show.web', $article->id))  // Use the article route
-                    ->setLastModificationDate($article->updated_at)
+                    ->setLastModificationDate(now())
                     ->setChangeFrequency(Url::CHANGE_FREQUENCY_DAILY)
                     ->setPriority(0.8)
             );
